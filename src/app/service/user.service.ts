@@ -1,88 +1,54 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 
 import { User } from '../models';
 
-interface UserFilter {
-  username?: string
+function saveToStorage(key: string, value: any) {
+    localStorage.setItem(key, JSON.stringify(value));
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+function loadFromStorage(key: string) {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : undefined;
+}
+
+const STORAGE_KEY = 'loggedInUser';
+
+@Injectable({ providedIn: 'root' })
 export class UserService {
-  private _usersDb!: User[]
+    private _user$ = new BehaviorSubject<User | null>(null);
+    public user$ = this._user$.asObservable();
 
-  constructor(private http: HttpClient) { }
-
-  private _users$ = new BehaviorSubject<User[]>([]);
-  public users$ = this._users$.asObservable()
-
-  private _usersFilter$ = new BehaviorSubject<UserFilter>({ username: '' });
-  public usersFilter$ = this._usersFilter$.asObservable()
-
-  public query() {
-    let users = this._usersDb
-    const username = this._usersFilter$.value?.username
-    if (username) {
-      const regex = new RegExp(username, 'i')
-      users = users.filter(({ username }) => regex.test(username))
+    public loadUser() {
+        const user = loadFromStorage(STORAGE_KEY);
+        if (user) this._user$.next(user);
     }
 
-    this._users$.next(users);
-  }
+    public signup(username: string) {
+        const user: User = {
+            _id: this._makeId(),
+            username,
+        };
 
-  public setFilter(userFilter: UserFilter) {
-    this._usersFilter$.next(userFilter)
-    this.query()
-  }
-
-  public getEmptyUser() {
-    return {
-      _id: '',
-      username: ''
+        this._user$.next(user);
+        saveToStorage(STORAGE_KEY, user);
+        return of({ ...user });
     }
-  }
 
-  public remove(userId: string) {
-    const users = this._usersDb
-    const tweetIdx = users.findIndex(user => user._id === userId)
-    users.splice(tweetIdx, 1)
-    this._users$.next(users);
-    return of({})
-  }
-
-  public getById(userId: string): Observable<User> {
-    const user = this._usersDb.find(user => user._id === userId)
-    return user ? of({ ...user }) : of()
-  }
-
-  public save(user: User) {
-    return user._id ? this._edit(user) : this._add(user)
-  }
-
-  private _add(user: User) {
-    user._id = this._makeId()
-    this._usersDb.push(user)
-    this._users$.next(this._usersDb)
-    return of(user)
-  }
-
-  private _edit(user: User) {
-    const users = this._usersDb
-    const userIdx = users.findIndex(_user => _user._id === user._id)
-    users.splice(userIdx, 1, user)
-    this._users$.next(users)
-    return of(user)
-  }
-
-  private _makeId(length = 5) {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (var i = 0; i < length; i++) {
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    public logout() {
+        localStorage.removeItem(STORAGE_KEY);
+        this._user$.next(null);
     }
-    return text;
-  }
+
+    private _makeId(length = 5) {
+        var text = '';
+        var possible =
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        for (var i = 0; i < length; i++) {
+            text += possible.charAt(
+                Math.floor(Math.random() * possible.length)
+            );
+        }
+        return text;
+    }
 }
