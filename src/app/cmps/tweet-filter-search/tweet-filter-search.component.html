@@ -1,1 +1,12 @@
-<p>tweet-filter-search works!</p>
+    <section class="search-filter">
+        <form>
+            <label for="term">
+                <input 
+                    [(ngModel)]="tweetFilter.term" 
+                    (ngModelChange)="onSetFilter()" 
+                    type="text" 
+                    name="term" 
+                    id="term">
+            </label>
+        </form>
+    </section>
