@@ -5,4 +5,13 @@
     <li>C</li>
     <li>D</li>
     <li>E</li>
+    <li *ngIf="!user">
+        <a routerLink="/signup">Signup</a>
+    </li>
+    <li *ngIf="user">
+        <a routerLink="/profile">{{ user.username }}</a>
+    </li>
+    <li *ngIf="user">
+        <button (click)="logout()">Logout</button>
+    </li>
 </nav>

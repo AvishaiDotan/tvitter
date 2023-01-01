@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { TwitterIndexComponent } from './views/twitter-index/twitter-index.component';
 import { TweetDetailsComponent } from './views/tweet-details/tweet-details.component';
+import { SignupComponent } from './views/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,11 @@ const routes: Routes = [
     path: 'tweet/:id',
     component: TweetDetailsComponent,
     title: 'Tweet'
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+    title: 'Signup'
   },
   {
     path: '**',

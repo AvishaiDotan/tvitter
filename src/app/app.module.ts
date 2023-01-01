@@ -14,6 +14,7 @@ import { TweetDetailsComponent } from './views/tweet-details/tweet-details.compo
 import { TweetFilterComponent } from './cmps/tweet-filter/tweet-filter.component';
 import { TweetFilterSearchComponent } from './cmps/tweet-filter-search/tweet-filter-search.component';
 import { TweetFilterTagsComponent } from './cmps/tweet-filter-tags/tweet-filter-tags.component';
+import { SignupComponent } from './views/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TweetFilterTagsComponent } from './cmps/tweet-filter-tags/tweet-filter-
     TweetDetailsComponent,
     TweetFilterComponent,
     TweetFilterSearchComponent,
-    TweetFilterTagsComponent
+    TweetFilterTagsComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
