@@ -4,8 +4,6 @@ import { Tweet, TweetFilter, User } from '../models/tweet.model';
 import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { tweetsDB } from './tweetsDB'
 
-
-
 @Injectable({
     providedIn: 'root'
 })
@@ -85,4 +83,10 @@ export class TwitterService {
         }
         return text;
     }
+
+    public printDemo() {
+        console.log(this._tweetsDb);
+    }
 }
+
+
