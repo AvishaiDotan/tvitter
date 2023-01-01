@@ -8,12 +8,12 @@ import { BehaviorSubject, map, Observable, of } from 'rxjs';
 })
 export class TwitterService {
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
-    private _tweetsDb: Tweet[] | null
-    private _UsersDb: User[] | null
+    private _tweetsDb!: Tweet[]
+    private _UsersDb!: User[]
 
-    
+
     private _tweets$ = new BehaviorSubject<Tweet[]>([]);
     public tweets$ = this._tweets$.asObservable()
 
@@ -22,24 +22,20 @@ export class TwitterService {
 
     public query() {
         const filterBy = this._tweetFilter$.value
-        if (this._tweetsDb === null) return
 
-        const tweets = this._tweetsDb.filter(({ username }) => {
-            return name.toLowerCase().includes(filterBy.term.toLowerCase());
+        const tweets = this._tweetsDb.filter(({ text }) => {
+            return text.toLowerCase().includes(filterBy.term.toLowerCase());
         });
         this._tweets$.next(tweets);
     }
 
-    public shouldAdoptTweet() {
-        return this.http.get<{ answer: string }>('https://yesno.wtf/api')
-            .pipe(
-                map(res => res.answer)
-            )
-    }
-
-
-    public getEmptyTweet() {
-        return { name: '', age: 0, birthDate: new Date() }
+    public getEmptyTweet(): object {
+        return {
+            text: '',
+            username: '',
+            replies: [],
+            likes: [],
+        }
     }
 
     public remove(tweetId: string) {
@@ -52,7 +48,7 @@ export class TwitterService {
 
     public getById(tweetId: string): Observable<Tweet> {
         const tweet = this._tweetsDb.find(tweet => tweet._id === tweetId)
-        return tweet ? of({ ...tweet }) : of() 
+        return tweet ? of({ ...tweet }) : of()
     }
 
     public save(tweet: Tweet) {
