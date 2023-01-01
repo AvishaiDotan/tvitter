@@ -1,10 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { TweetFilter } from 'src/app/models';
+
+import { TwitterService } from '../../service/twitter.service';
 
 @Component({
   selector: 'tweet-filter-search',
   templateUrl: './tweet-filter-search.component.html',
   styleUrls: ['./tweet-filter-search.component.scss']
 })
-export class TweetFilterSearchComponent {
+export class TweetFilterSearchComponent implements OnInit, OnDestroy {
+  filterBy!: TweetFilter
+  subscription!: Subscription
+  
+  constructor(private twitterService: TwitterService) {}
 
+  ngOnInit(): void {
+    this.subscription = this.twitterService.tweetFilter$.subscribe(filterBy => {
+      this.filterBy = filterBy
+    })
+  }
+
+  handleSearchChange() {
+    this.twitterService.setFilter({ ...this.filterBy })
+    console.log(this.filterBy);
+    
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
 }

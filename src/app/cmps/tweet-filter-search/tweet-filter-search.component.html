@@ -1,1 +1,11 @@
-<p>tweet-filter-search works!</p>
+<section>
+    <label for="term">Search: </label>
+    <input
+        id="term"
+        type="text"
+        name="term"
+        [(ngModel)]="filterBy.term"
+        (ngModelChange)="handleSearchChange()"
+        placeholder="Search Tvitter"
+    />
+</section>
