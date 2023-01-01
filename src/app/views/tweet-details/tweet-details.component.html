@@ -1,7 +1,12 @@
 <section *ngIf="tweet" class="tweet-details">
-    <h3>
-        <span>@{{ tweet.username }}</span>
-        <span>﹒ {{tweet.createdAt | date: 'MMM d, y' }}</span>
-    </h3>
-    <h2>{{ tweet.text }}</h2>
+    <section class="tweet-header">
+        <h3>@{{ tweet.username }}</h3>
+        <span>{{tweet.createdAt | date: 'MMM d, y' }}</span>
+    </section>
+    <p>{{ tweet.text }}</p>
+    <section class="replies">
+        <ul class="replies-list">
+            <li *ngFor="let replay of tweet.replies">{{ replay.text }}</li>
+        </ul>
+    </section>
 </section>
