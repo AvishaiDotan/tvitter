@@ -62,7 +62,11 @@ export class TwitterService {
 
     private _add(tweet: Tweet) {
         tweet._id = this._makeId()
-        this._tweetsDb.push(tweet)
+        tweet.createdAt = Date.now()
+        tweet.likes = []
+        tweet.replies = []
+
+        this._tweetsDb.unshift(tweet)
         this._tweets$.next(this._tweetsDb)
         return of(tweet)
     }
