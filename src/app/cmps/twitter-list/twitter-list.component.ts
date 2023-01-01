@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Tweet } from 'src/app/models/tweet.model';
 
 @Component({
   selector: 'twitter-list',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./twitter-list.component.scss']
 })
 export class TwitterListComponent {
+  @Input() tweets!: Tweet[] | null
+  
 
 }

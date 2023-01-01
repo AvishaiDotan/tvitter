@@ -1,10 +1,11 @@
 <section class="twitter-app">
 
-    <tweet-details [tweetId]="selectedTweetId" *ngIf="selectedTweetId; else twitterList"></tweet-details>
+    <!-- <tweet-details [tweetId]="selectedTweetId" *ngIf="selectedTweetId; else twitterList"></tweet-details> -->
+    <!-- <tweet-details [tweetId]="selectedTweetId"></tweet-details> -->
 
     <add-tweet-form></add-tweet-form>
 
-    <ng-template #twitterList>
-        <twitter-list></twitter-list>
-    </ng-template>
+    <!-- <ng-template #twitterList> -->
+        <twitter-list [tweets]="tweets$ | async"></twitter-list>
+    <!-- </ng-template> -->
 </section>

@@ -1,3 +1,3 @@
 <section class="twitter-list">
-    <tweet-preview></tweet-preview>
+    <tweet-preview *ngFor="let tweet of tweets" [tweet]="tweet"></tweet-preview>
 </section>
