@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { UserService } from '../../service/user.service';
 import { User } from 'src/app/models';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-header',
@@ -13,7 +14,10 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
     user?: User | null;
     userSubscription!: Subscription
 
-    constructor(private userService: UserService) {}
+    constructor(
+        private userService: UserService,
+        private router: Router,
+    ) {}
 
     ngOnInit(): void {
         this.userSubscription = this.userService.user$.subscribe((user) => (this.user = user));
@@ -21,6 +25,7 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
 
     logout() {
         this.userService.logout();
+        this.router.navigate(['/home'])
     }
 
     ngOnDestroy(): void {
