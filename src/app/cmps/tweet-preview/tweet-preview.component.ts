@@ -6,6 +6,5 @@ import {TwitterService} from '../../service/twitter.service'
     templateUrl: './tweet-preview.component.html',
     styleUrls: ['./tweet-preview.component.scss']
 })
-export class TweetPreviewComponent extends onInit {
-
+export class TweetPreviewComponent {
 }
