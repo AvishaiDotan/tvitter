@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Tweet, TweetFilter, User } from '../models/tweet.model';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, map, Observable, of } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -52,7 +52,7 @@ export class TwitterService {
 
     public getById(tweetId: string): Observable<Tweet> {
         const tweet = this._tweetsDb.find(tweet => tweet._id === tweetId)
-        return tweet ? of({ ...tweet }) : of()
+        return tweet ? of({ ...tweet }) : of() 
     }
 
     public save(tweet: Tweet) {
