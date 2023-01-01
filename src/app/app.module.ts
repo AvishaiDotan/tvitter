@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app-root/app.component';
@@ -8,12 +10,10 @@ import { AppHeaderComponent } from './cmps/app-header/app-header.component';
 import { TwitterListComponent } from './cmps/twitter-list/twitter-list.component';
 import { AddTweetFormComponent } from './cmps/add-tweet-form/add-tweet-form.component';
 import { TweetPreviewComponent } from './cmps/tweet-preview/tweet-preview.component';
-import { TweetDetailsComponent } from './cmps/tweet-details/tweet-details.component';
+import { TweetDetailsComponent } from './views/tweet-details/tweet-details.component';
 import { TweetFilterComponent } from './cmps/tweet-filter/tweet-filter.component';
 import { TweetFilterSearchComponent } from './cmps/tweet-filter-search/tweet-filter-search.component';
 import { TweetFilterTagsComponent } from './cmps/tweet-filter-tags/tweet-filter-tags.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
