@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'add-twitt-form',
-  templateUrl: './add-twitt-form.component.html',
-  styleUrls: ['./add-twitt-form.component.scss']
+  selector: 'add-tweet-form',
+  templateUrl: './add-tweet-form.component.html',
+  styleUrls: ['./add-tweet-form.component.scss']
 })
-export class AddTwittFormComponent {
+export class AddTweetFormComponent {
 
 }
