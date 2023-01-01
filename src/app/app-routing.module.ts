@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TwitterIndexComponent } from './views/twitter-index/twitter-index.component';
 import { TweetDetailsComponent } from './views/tweet-details/tweet-details.component';
 import { SignupComponent } from './views/signup/signup.component';
+import { ProfileComponent } from './views/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent,
     title: 'Signup'
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    title: 'Profile'
   },
   {
     path: '**',
