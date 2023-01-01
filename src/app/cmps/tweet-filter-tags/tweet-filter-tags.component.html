@@ -1,1 +1,10 @@
-<p>tweet-filter-tags works!</p>
+<section class="filter-tags">
+    <h1>
+        Trends for you
+    </h1>
+    <ul>
+        <li *ngFor="let tag of tags">
+            <p (click)="setFilter(tag)">{{tag}}</p>
+        </li>
+    </ul>
+</section>

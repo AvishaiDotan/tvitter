@@ -1,0 +1,7 @@
+<section *ngIf="tweet" class="tweet-details">
+    <h3>
+        <span>@{{ tweet.username }}</span>
+        <span>﹒ {{tweet.createdAt | date: 'MMM d, y' }}</span>
+    </h3>
+    <h2>{{ tweet.text }}</h2>
+</section>

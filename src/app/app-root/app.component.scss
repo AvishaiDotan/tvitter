@@ -1,5 +1,5 @@
 .main-layout {
     display: grid;
-    grid-template-columns: repeat(3, minmax(300px, 1fr));
-    padding-inline: 250px;
+    grid-template-columns: 275px 600px 400px;
+    padding-inline: 192px;
 }

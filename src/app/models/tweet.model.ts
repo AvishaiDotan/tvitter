@@ -1,3 +1,5 @@
+import { User } from './user.model'
+
 export interface Tweet {
     _id: string;
     text: string;
@@ -7,13 +9,6 @@ export interface Tweet {
     likes: User[];
 }
 
-export interface User {
-    _id: string;
-    username: string;
-}
-
 export interface TweetFilter {
     term: string;
 }
-
-

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Tweet, TweetFilter, User } from '../models/tweet.model';
-import { BehaviorSubject, map, Observable, of } from 'rxjs';
+import { Tweet, TweetFilter, User } from '../models';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tweetsDB } from './tweetsDB'
 
 @Injectable({
@@ -27,6 +27,10 @@ export class TwitterService {
             return text.toLowerCase().includes(filterBy.term.toLowerCase());
         });
         this._tweets$.next(tweets);
+    }
+
+    public getAllTweets(): Tweet[]{
+        return [...this._tweetsDb]
     }
 
     public getEmptyTweet(): object {
@@ -62,7 +66,11 @@ export class TwitterService {
 
     private _add(tweet: Tweet) {
         tweet._id = this._makeId()
-        this._tweetsDb.push(tweet)
+        tweet.createdAt = Date.now()
+        tweet.likes = []
+        tweet.replies = []
+
+        this._tweetsDb.unshift(tweet)
         this._tweets$.next(this._tweetsDb)
         return of(tweet)
     }

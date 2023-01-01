@@ -1,1 +1,6 @@
-<p>tweet-preview works!</p>
+<a routerLink="/tweet/{{tweet._id}}">
+    <section class="tweet-preview">
+        <h5>@{{tweet.username}}</h5>
+        <h3>{{tweet.text}}</h3>
+    </section>
+</a>
