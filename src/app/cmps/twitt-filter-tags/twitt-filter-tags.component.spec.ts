@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TwittFilterTagsComponent } from './twitt-filter-tags.component';
+import { TweetFilterTagsComponent } from './tweet-filter-tags.component';
 
-describe('TwittFilterTagsComponent', () => {
-  let component: TwittFilterTagsComponent;
-  let fixture: ComponentFixture<TwittFilterTagsComponent>;
+describe('TweetFilterTagsComponent', () => {
+  let component: TweetFilterTagsComponent;
+  let fixture: ComponentFixture<TweetFilterTagsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TwittFilterTagsComponent ]
+      declarations: [ TweetFilterTagsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TwittFilterTagsComponent);
+    fixture = TestBed.createComponent(TweetFilterTagsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

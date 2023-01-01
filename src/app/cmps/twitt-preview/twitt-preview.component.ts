@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'twitt-preview',
-  templateUrl: './twitt-preview.component.html',
-  styleUrls: ['./twitt-preview.component.scss']
+  selector: 'tweet-preview',
+  templateUrl: './tweet-preview.component.html',
+  styleUrls: ['./tweet-preview.component.scss']
 })
-export class TwittPreviewComponent {
+export class TweetPreviewComponent {
 
 }

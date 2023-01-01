@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TwittFilterSearchComponent } from './twitt-filter-search.component';
+import { TweetFilterSearchComponent } from './tweet-filter-search.component';
 
-describe('TwittFilterSearchComponent', () => {
-  let component: TwittFilterSearchComponent;
-  let fixture: ComponentFixture<TwittFilterSearchComponent>;
+describe('TweetFilterSearchComponent', () => {
+  let component: TweetFilterSearchComponent;
+  let fixture: ComponentFixture<TweetFilterSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TwittFilterSearchComponent ]
+      declarations: [ TweetFilterSearchComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TwittFilterSearchComponent);
+    fixture = TestBed.createComponent(TweetFilterSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

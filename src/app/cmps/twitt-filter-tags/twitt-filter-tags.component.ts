@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'twitt-filter-tags',
-  templateUrl: './twitt-filter-tags.component.html',
-  styleUrls: ['./twitt-filter-tags.component.scss']
+  selector: 'tweet-filter-tags',
+  templateUrl: './tweet-filter-tags.component.html',
+  styleUrls: ['./tweet-filter-tags.component.scss']
 })
-export class TwittFilterTagsComponent {
+export class TweetFilterTagsComponent {
 
 }
