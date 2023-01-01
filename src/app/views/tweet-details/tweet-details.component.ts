@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
-import { Tweet } from 'src/app/models/tweet.model';
-import { TwitterService } from 'src/app/service/twitter.service';
+
+import { Tweet } from '../../models';
+import { TwitterService } from '../../service/twitter.service';
 
 @Component({
   selector: 'tweet-details',
@@ -10,14 +12,26 @@ import { TwitterService } from 'src/app/service/twitter.service';
 })
 export class TweetDetailsComponent implements OnInit {
 
-  constructor(private twitterService: TwitterService){}
+  constructor(
+    private twitterService: TwitterService,
+    private route: ActivatedRoute
+  ) {}
 
-  @Input() tweetId!: string
+  tweetId!: string
   tweet: Tweet | undefined
 
   async ngOnInit(): Promise<void> {
-    const tweet = await lastValueFrom(this.twitterService.getById(this.tweetId))
-    this.tweet = tweet    
+    const tweedId = this.route.snapshot.params['id']
+    this.tweetId = tweedId
+
+    this.route.params.subscribe(params => {
+      this.tweetId = params['id']
+      this.loadTweet()
+    })
   }
 
+  async loadTweet() {
+    const tweet = await lastValueFrom(this.twitterService.getById(this.tweetId))
+    this.tweet = tweet
+  }
 }
