@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Tweet, TweetFilter, User } from '../models/tweet.model';
-import { BehaviorSubject, map, Observable, of } from 'rxjs';
+import { Tweet, TweetFilter, User } from '../models';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tweetsDB } from './tweetsDB'
 
 @Injectable({
