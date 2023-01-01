@@ -11,7 +11,7 @@ import { Tweet } from '../../models/tweet.model';
 })
 export class AddTweetFormComponent {
   profileForm = this.formBuilder.group({
-    text: ['', [Validators.required, Validators.minLength(3)]]
+    text: ['What\'s happening', [Validators.required, Validators.minLength(3)]]
   });
   @Output() onSubmit = new EventEmitter<Tweet>();
 
@@ -21,7 +21,7 @@ export class AddTweetFormComponent {
      const { text } = this.profileForm.value
      const tweet: Tweet = {
       text,
-      username: 'Test username',
+      username: 'Test user',
      } as Tweet
      this.onSubmit.emit(tweet!)
   }
