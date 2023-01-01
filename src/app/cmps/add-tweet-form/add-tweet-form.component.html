@@ -1,1 +1,6 @@
-<p>add-tweet-form works!</p>
+<form [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
+  <label for="text">text: </label>
+  <input id="text" type="text" formControlName="text" minlength="3" required>
+
+  <button type="submit" [disabled]="!profileForm.valid">Tweet</button>
+</form>

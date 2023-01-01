@@ -13,7 +13,7 @@ import { TweetFilterComponent } from './cmps/tweet-filter/tweet-filter.component
 import { TweetFilterSearchComponent } from './cmps/tweet-filter-search/tweet-filter-search.component';
 import { TweetFilterTagsComponent } from './cmps/tweet-filter-tags/tweet-filter-tags.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
