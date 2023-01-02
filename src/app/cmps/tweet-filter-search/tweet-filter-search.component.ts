@@ -12,12 +12,11 @@ import { TwitterService } from '../../service/twitter.service';
 })
 export class TweetFilterSearchComponent implements OnInit, OnDestroy {
     
-    constructor(private TwitterService: TwitterService) { }
+    constructor(public TwitterService: TwitterService) { }
 
     filterBy!: TweetFilter
     subscription!: Subscription
     handleSearchChange!: () => void
-
 
 
     ngOnInit(): void {
@@ -35,4 +34,6 @@ export class TweetFilterSearchComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.subscription.unsubscribe()
     }
+
+    
 }

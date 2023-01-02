@@ -1,0 +1,44 @@
+<section *ngIf="isOpenModal | async" class="dark-overlay">
+    <section class="advanced-search">
+        <header>
+            <svg (click)="twitterService.toggleAdvancedSearchModal()" xmlns="http://www.w3.org/2000/svg" width="16"
+                height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path
+                    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+            </svg>
+            <h1>
+                Advanced search
+            </h1>
+        </header>
+        <form>
+            <section class="flex column">
+                <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+                    <div>
+                        <h2>Word</h2>
+                        <input ngModel name="term" placeholder="Contains this word" />
+                    </div>
+
+                    <div>
+                        <h2>Account</h2>
+                        <input ngModel pattern="^@\w+$" name="account" placeholder="From this account"
+                            #account="ngModel" />
+                        <p class="errors" *ngIf="account.invalid && account.touched">
+                            <span *ngIf="account.errors?.['pattern']">Account must start with '@' and have only one
+                                account</span>
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2>Hashtag</h2>
+                        <input ngModel name="hashtag" placeholder="Contains this hashtag" />
+                    </div>
+
+                    <div>
+                        <button [disabled]="form.invalid" md-button color="primary" type="submit">Search</button>
+                    </div>
+                </form>
+            </section>
+        </form>
+    </section>
+</section>

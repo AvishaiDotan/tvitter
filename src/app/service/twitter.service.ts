@@ -11,6 +11,9 @@ export class TwitterService {
     constructor(private userService: UserService) {}
     private _tweetsDb: Tweet[] = tweetsDB;
 
+    private _isAdvancedSearchModal$ = new BehaviorSubject<boolean>(false);
+    public isAdvancedSearchModal$ = this._isAdvancedSearchModal$.asObservable();
+
     private _tweets$ = new BehaviorSubject<Tweet[]>([]);
     public tweets$ = this._tweets$.asObservable();
 
@@ -22,6 +25,17 @@ export class TwitterService {
 
         const tweets = this._tweetsDb.filter(({ text, belongsTo }) => {
             return !belongsTo && text.toLowerCase().includes(filterBy.term.toLowerCase());
+        });
+        this._tweets$.next(tweets);
+    }
+
+    public advancedQuery(filter: {term: string, hashtag: string, account: string}): void {
+        const tweets = this._tweetsDb.filter((tweet) => {
+            const isFromAccount = tweet.user.username.toLowerCase().includes(filter.account.replace('@', '').toLowerCase())
+            const isContainHashtag = tweet.text.toLowerCase().includes(filter.hashtag.toLowerCase())
+            const isContainTerm = tweet.text.toLowerCase().includes(filter.term.toLowerCase())
+
+            return (isFromAccount && isContainHashtag && isContainTerm)
         });
         this._tweets$.next(tweets);
     }
@@ -125,7 +139,7 @@ export class TwitterService {
         return text;
     }
 
-    public printDemo() {
-        console.log(this._tweetsDb);
+    public toggleAdvancedSearchModal() {
+        this._isAdvancedSearchModal$.next(!this._isAdvancedSearchModal$.getValue())
     }
 }

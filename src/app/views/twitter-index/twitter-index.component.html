@@ -1,4 +1,7 @@
-<section class="twitter-app">
+<section #top class="twitter-app">
+    <header>
+        <h2 (click)="scroll(top)">Home</h2>
+    </header>
     <add-tweet-form [placeholderText]="'What\'s happening?'"></add-tweet-form>
     <twitter-list
         [tweets]="tweets$ | async"

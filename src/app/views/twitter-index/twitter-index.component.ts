@@ -9,7 +9,9 @@ import { TwitterService } from 'src/app/service/twitter.service';
     styleUrls: ['./twitter-index.component.scss'],
 })
 export class TwitterIndexComponent implements OnInit {
-    constructor(private twitterService: TwitterService) {}
+    constructor(
+        private twitterService: TwitterService
+    ) {}
 
     tweets!: Tweet[];
     tweets$!: Observable<Tweet[]>;
@@ -22,5 +24,9 @@ export class TwitterIndexComponent implements OnInit {
 
     async handleLike(tweet: Tweet) {
         await lastValueFrom(this.twitterService.toggleLike(tweet._id))
+    }
+
+    scroll(el: HTMLElement) {
+        el.scrollIntoView({behavior: 'smooth'});
     }
 }

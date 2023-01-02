@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { UserService } from '../../service/user.service';
+import { TwitterService } from '../../service/twitter.service';
 import { User } from 'src/app/models';
 import { Router } from '@angular/router';
 
@@ -17,6 +18,7 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
     constructor(
         private userService: UserService,
         private router: Router,
+        private TwitterService: TwitterService
     ) {}
 
     ngOnInit(): void {
@@ -31,4 +33,11 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.userSubscription.unsubscribe()
     }
+
+    onGoHomePage() {
+        this.TwitterService.setFilter({term: ''})
+        this.router.navigate(['/']);
+    }
+
+    
 }
