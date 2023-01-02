@@ -18,7 +18,5 @@ export class TwitterIndexComponent implements OnInit {
     ngOnInit(): void {
         this.twitterService.query();
         this.tweets$ = this.twitterService.tweets$;
-
-        console.log('tweets in index', this.tweets$);
     }
 }

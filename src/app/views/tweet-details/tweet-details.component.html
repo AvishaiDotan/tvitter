@@ -1,11 +1,11 @@
 <section *ngIf="tweet" class="tweet-details">
     <section class="tweet-header">
-        <h3>@{{ tweet.username }}</h3>
+        <h3>@{{ tweet.user.username }}</h3>
         <span>{{tweet.createdAt | date: 'MMM d, y' }}</span>
     </section>
     <p>{{ tweet.text }}</p>
     <section class="replies">
-        <twitter-list [tweets]="tweet.replies"></twitter-list>
+        <twitter-list [tweets]="tweetReplies"></twitter-list>
     </section>
 
     <add-reply [tweet]="tweet"></add-reply>

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { TwitterService } from 'src/app/service/twitter.service';
+import { UserService } from 'src/app/service/user.service';
 
 import { Tweet } from '../../models/tweet.model';
 
@@ -21,14 +22,15 @@ export class AddTweetFormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private twitterService: TwitterService
+    private twitterService: TwitterService,
+    private userService: UserService
   ) {}
 
   handleSubmit() {
      const { text } = this.profileForm.value
      const tweet: Tweet = {
       text,
-      username: 'Test user',
+      user: this.userService.loggedInUser
      } as Tweet
 
      if (this.tweetId) this.twitterService.saveAsReply(this.tweetId, tweet)

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Tweet, TweetFilter, User } from '../models';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Tweet, TweetFilter } from '../models';
+import { BehaviorSubject, Observable, of, lastValueFrom } from 'rxjs';
 import { tweetsDB } from './tweetsDB';
 
 @Injectable({
@@ -10,7 +10,6 @@ import { tweetsDB } from './tweetsDB';
 export class TwitterService {
     constructor(private http: HttpClient) {}
     private _tweetsDb: Tweet[] = tweetsDB;
-    private _UsersDb!: User[];
 
     private _tweets$ = new BehaviorSubject<Tweet[]>([]);
     public tweets$ = this._tweets$.asObservable();
@@ -21,14 +20,18 @@ export class TwitterService {
     public query() {
         const filterBy = this._tweetFilter$.value;
 
-        const tweets = this._tweetsDb.filter(({ text }) => {
-            return text.toLowerCase().includes(filterBy.term.toLowerCase());
+        const tweets = this._tweetsDb.filter(({ text, belongsTo }) => {
+            return !belongsTo && text.toLowerCase().includes(filterBy.term.toLowerCase());
         });
         this._tweets$.next(tweets);
     }
 
     public getAllTweets(): Tweet[] {
         return [...this._tweetsDb];
+    }
+
+    public getTweetReplies(tweetId: string): Tweet[] {
+        return this.getAllTweets().filter((({ belongsTo }) => belongsTo === tweetId));
     }
 
     public getEmptyTweet(): object {
@@ -50,38 +53,23 @@ export class TwitterService {
     }
 
     public getById(tweetId: string): Observable<Tweet> {
-        let tweet = this._tweetsDb.find(
-            (tweet) => tweet._id === String(parseInt(tweetId))
-        );
-        if (tweetId !== tweet?._id) {
-            tweet = tweet?.replies.find((tweet) => tweet._id === tweetId);
-        }
-
+        let tweet = this._tweetsDb.find(tweet => tweet._id === tweetId)
         return tweet ? of({ ...tweet }) : of();
     }
-
-    //  ATTEMPT AT RECURSIVELY GETTING THE TWEET FROM THE REPLIES ARRAY
-    // public getById(tweetId: string, dataBase:Tweet[] = this._tweetsDb): Observable<Tweet> {
-    //     let tweet = dataBase.find(
-    //         (tweet) => tweet._id === String(parseInt(tweetId))
-    //     );
-    //     if (tweetId !== tweet?._id) {
-    //         tweet = this.getById(tweet?._id, tweet?.replies);
-    //     }
-    //     return tweet ? of({ ...tweet }) : of();
-    // }
 
     public save(tweet: Tweet) {
         return tweet._id ? this._edit(tweet) : this._add(tweet);
     }
-    
-    public saveAsReply(tweetId: string, newTweet: Tweet ) {
-        const originalTweet = this._tweetsDb.find( tweet => tweet._id === tweetId) 
+
+    public async saveAsReply(tweetId: string, newTweet: Tweet) {
+        const originalTweet = this._tweetsDb.find( tweet => tweet._id === tweetId)
         if(originalTweet) {
-            originalTweet.replies.unshift({...this.getEmptyTweet(), ...newTweet})
-            return this._edit(originalTweet)
+            newTweet.belongsTo = tweetId
+            const { _id } = await lastValueFrom(this._add(newTweet))
+            originalTweet.replies.unshift(_id)
+            return lastValueFrom(this._edit(originalTweet))
         }
-        return of(null)
+        return Promise.resolve(null)
     }
 
     public setFilter(tweetFilter: TweetFilter) {
@@ -90,10 +78,12 @@ export class TwitterService {
     }
 
     private _add(tweet: Tweet) {
-        tweet._id = this._makeId();
-        tweet.createdAt = Date.now();
-        tweet.likes = [];
-        tweet.replies = [];
+        tweet = {
+            ...this.getEmptyTweet(),
+            ...tweet,
+            _id: this._makeId(),
+            createdAt: Date.now()
+        } as Tweet
 
         this._tweetsDb.unshift(tweet);
         this._tweets$.next(this._tweetsDb);
