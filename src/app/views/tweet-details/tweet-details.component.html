@@ -2,6 +2,7 @@
     <section class="tweet-header">
         <h3>@{{ tweet.username }}</h3>
         <span>{{tweet.createdAt | date: 'MMM d, y' }}</span>
+        <img *ngIf="(+this.tweet._id % 3 === 0)" src='https://picsum.photos/id/{{tweet._id}}/400/200' alt="">
     </section>
     <p>{{ tweet.text }}</p>
     <section class="replies">

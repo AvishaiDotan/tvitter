@@ -1,13 +1,11 @@
 /* ProfileEditorComponent's private CSS styles */
+@import '../../../../src/styles.scss';
 
-form {
-  padding-top: 1rem;
-}
 
-label {
-  display: block;
-  margin: .5em 0;
-  font-weight: bold;
+.add-tweet-form {
+    border-block-end: 0.05px solid rgb(237, 237, 237);
+    padding-inline: 5px;
+    padding-block: 5px;
 }
 
 
