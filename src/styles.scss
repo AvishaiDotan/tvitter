@@ -8,3 +8,12 @@ $clr1: #657786;
 $clr0: #292F33;
 
 @import '../node_modules/scss-reset/src/scss/_reset.scss';
+
+@font-face {
+    font-family: twitterchirp;
+    src: url(assets/fonts/twitterChirp/twitterchirp.ttf);
+}
+
+html {
+    font-family: twitterchirp, Helvetica, -apple-system, 'Segoe UI', sans-serif;
+}

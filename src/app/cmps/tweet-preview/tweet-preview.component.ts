@@ -10,9 +10,4 @@ import {TwitterService} from '../../service/twitter.service'
 export class TweetPreviewComponent {
 
     @Input() tweet!: Tweet
-
-    isImageShown(): boolean {
-        return (+this.tweet._id % 3 === 0)
-    }
-
 }

@@ -1,6 +1,6 @@
-<form [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
-  <label for="text"></label>
-  <input id="text" type="text" formControlName="text" minlength="3" required placeholder={{placeholderText}}>
+<form  class="add-tweet-form" [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
+  <label for="text">Say something: </label>
+  <input id="text" type="text" formControlName="text" minlength="3" required placeholder="What's happening">
 
   <button type="submit" [disabled]="!profileForm.valid">Tweet</button>
 </form>

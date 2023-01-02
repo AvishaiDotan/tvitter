@@ -2,5 +2,5 @@
     <!-- <section [routerLink]="['/tweet', 4]" class="tweet-preview"> -->
         <h5>@{{tweet.user.username}}</h5>
         <h3>{{tweet.text}}</h3>
-        <img *ngIf="isImageShown()" src='https://picsum.photos/id/{{tweet._id}}/400/200' alt="">
+        <img *ngIf="(+this.tweet._id % 3 === 0)" src='https://picsum.photos/id/{{tweet._id}}/400/200' alt="">
     </section>

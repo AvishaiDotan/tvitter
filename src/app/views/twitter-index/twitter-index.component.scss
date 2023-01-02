@@ -1,0 +1,10 @@
+@import '../../../../src/styles.scss';
+
+:host {
+    padding-inline: 5px;
+}
+
+.twitter-app {
+    border-inline: 0.05px solid rgb(237, 237, 237);
+    margin-inline: 5px;
+}
