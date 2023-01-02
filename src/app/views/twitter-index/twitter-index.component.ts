@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 import { Tweet } from 'src/app/models/tweet.model';
 import { TwitterService } from 'src/app/service/twitter.service';
 
@@ -9,17 +9,24 @@ import { TwitterService } from 'src/app/service/twitter.service';
     styleUrls: ['./twitter-index.component.scss'],
 })
 export class TwitterIndexComponent implements OnInit {
-    constructor(private twitterService: TwitterService) {}
+    constructor(
+        private twitterService: TwitterService
+    ) {}
 
     tweets!: Tweet[];
     tweets$!: Observable<Tweet[]>;
     selectedTweetId: string = '';
-    
 
     ngOnInit(): void {
         this.twitterService.query();
         this.tweets$ = this.twitterService.tweets$;
     }
 
+    async handleLike(tweet: Tweet) {
+        await lastValueFrom(this.twitterService.toggleLike(tweet._id))
+    }
 
+    scroll(el: HTMLElement) {
+        el.scrollIntoView({behavior: 'smooth'});
+    }
 }

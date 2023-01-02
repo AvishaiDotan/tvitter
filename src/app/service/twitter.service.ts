@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Tweet, TweetFilter } from '../models';
 import { BehaviorSubject, Observable, of, lastValueFrom } from 'rxjs';
 import { tweetsDB } from './tweetsDB';
+import { UserService } from './user.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class TwitterService {
-    constructor(private http: HttpClient) {}
-
+    constructor(private userService: UserService) {}
     private _tweetsDb: Tweet[] = tweetsDB;
 
     private _isAdvancedSearchModal$ = new BehaviorSubject<boolean>(false);
@@ -57,6 +56,20 @@ export class TwitterService {
             likes: [],
             createdAt: Date.now()
         };
+    }
+
+    public toggleLike(tweetId: string): Observable<Tweet> {
+        const tweet = this._tweetsDb.find(({ _id }) => _id === tweetId)
+        const user = this.userService.loggedInUser!
+
+        if (tweet) {
+            const likeIdx = tweet.likes.findIndex(({ _id }) => _id === user._id)
+            const isLike = likeIdx >= 0
+            if (isLike) tweet.likes.splice(likeIdx, 1)
+            else tweet.likes.push(user)
+        }
+
+        return tweet ? this._edit(tweet) : of()
     }
 
     public remove(tweetId: string) {

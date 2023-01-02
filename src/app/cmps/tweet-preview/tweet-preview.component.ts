@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Tweet } from 'src/app/models/tweet.model';
-import {TwitterService} from '../../service/twitter.service'
 
 @Component({
     selector: 'tweet-preview',
@@ -18,4 +17,10 @@ export class TweetPreviewComponent {
     }
 
     
+    @Output() like = new EventEmitter<Tweet>()
+
+    likeClick(event: MouseEvent) {
+        event.stopPropagation()
+        this.like.emit(this.tweet)
+    }
 }

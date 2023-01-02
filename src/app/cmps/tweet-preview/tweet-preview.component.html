@@ -18,7 +18,7 @@
                 <img class="tweet-img" *ngIf="(+this.tweet._id % 3 === 0)" src='https://picsum.photos/id/{{tweet._id}}/400/200' alt="">    
             </div>
             <div class="tweet-actions">
-    
+                <button (click)="likeClick($event)">Like</button>
             </div>
         </section>
         
