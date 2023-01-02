@@ -1,4 +1,3 @@
-
 /* ProfileEditorComponent's private CSS styles */
 @import '../../../../src/styles.scss';
 
@@ -6,5 +5,60 @@
     border-block-end: 0.05px solid rgb(237, 237, 237);
     padding-inline: 5px;
     padding-block: 5px;
+    display: flex;
+    min-height: 100px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+        background-color: rgb(235, 235, 235);
+    }
+
+    .avatar-img-container {
+        display: flex;
+        justify-content: flex-start;
+        border-radius: 50%;
+
+        img {
+            min-width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+    }
+
+    .tweet-data {
+        padding-inline: 10px;
+
+        header {
+
+            h2 {
+                display: flex;
+                gap: 5px;
+                font-size: 15px;
     
+                :first-child {
+                    font-weight: 700;
+                }
+
+                :not(:first-child) {
+                    color: rgb(155, 155, 155);
+                }
+            }
+        }
+
+        .tweet-content {
+            padding-block: 10px;
+
+            img {
+                border-radius: 10px;
+            }
+
+            .tweet-text {
+                padding-block-end: 10px;
+            }
+        }
+    }
+
+
+
 }

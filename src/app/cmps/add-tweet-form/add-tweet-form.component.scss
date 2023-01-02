@@ -7,6 +7,60 @@
     padding-inline: 5px;
     padding-block: 5px;
     padding-block-start: 53px;
+
+    .tweet-body {
+        min-height: 52px;
+        display: flex;
+    }
+
+    .user-avatar-container {
+        display: flex;
+        justify-content: flex-start;
+        border-radius: 50%;
+
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+    }
+
+    input {
+        padding-inline-start: 10px;
+        width: calc(100% - 50px);
+        border: 0;
+        margin-block: 5px;
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        padding-inline: 10px;
+
+        button {
+            padding-inline: 19px;
+            padding-block: 10px;
+            background-color: #8ecdf8;
+            border-radius: 2em;
+            color: white;
+            transition: 0.4s;
+            cursor: pointer;
+            
+            &:hover {
+                background-color: #1d9bf0;
+            }
+        }
+    }
+
+    .underline {
+        width: calc(100% - 67px);
+        height: 1px;
+        background-color: gainsboro;
+        /* margin: auto; */
+        margin-block: 10px;
+        margin-inline-start: 55px;
+        margin-inline-end: 100px;
+    }
 }
 
 

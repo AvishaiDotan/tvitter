@@ -1,6 +1,12 @@
-<form  class="add-tweet-form" [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
-  <label for="text">Say something: </label>
-  <input id="text" type="text" formControlName="text" minlength="3" required placeholder="What's happening">
-
-  <button type="submit" [disabled]="!profileForm.valid">Tweet</button>
+<form class="add-tweet-form" [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
+    <section class="tweet-body">
+        <div class="user-avatar-container">
+            <img src="https://randomuser.me/api/portraits/med/men/{{user?._id || 0}}.jpg" alt="">
+        </div>
+        <input id="text" type="text" formControlName="text" minlength="3" required placeholder="What's happening">
+    </section>
+    <div class="underline"></div>
+    <div class="form-actions">
+        <button type="submit" [disabled]="!profileForm.valid">Tweet</button>
+    </div>
 </form>

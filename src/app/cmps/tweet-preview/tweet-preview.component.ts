@@ -10,4 +10,12 @@ import {TwitterService} from '../../service/twitter.service'
 export class TweetPreviewComponent {
 
     @Input() tweet!: Tweet
+
+    getDatePipe(timestamp: number): string {
+        if (Date.now() - timestamp < 60000) return 'ss'
+        if (Date.now() - timestamp < 3600000) return'mm'
+        return 'LLL d'
+    }
+
+    
 }

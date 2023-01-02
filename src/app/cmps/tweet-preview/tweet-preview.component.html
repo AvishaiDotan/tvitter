@@ -1,6 +1,25 @@
     <section [routerLink]="['/tweet', tweet._id]" class="tweet-preview">
     <!-- <section [routerLink]="['/tweet', 4]" class="tweet-preview"> -->
-        <h5>@{{tweet.user.username}}</h5>
-        <h3>{{tweet.text}}</h3>
-        <img *ngIf="(+this.tweet._id % 3 === 0)" src='https://picsum.photos/id/{{tweet._id}}/400/200' alt="">
+        <section class="avatar-img-container">
+            <img src="https://randomuser.me/api/portraits/med/men/{{tweet.user._id}}.jpg" alt="">
+        </section>
+        <section class="tweet-data">
+            <header class="tweet-details-header">
+                <h2>
+                    <span class="username">{{tweet.user.username}}</span>
+                    <span class="user-account">@{{tweet.user.username}}</span>
+                    <span class="publish-date">{{ tweet.createdAt | date:getDatePipe(tweet.createdAt) }}</span>
+                </h2>
+            </header>
+            <div class="tweet-content">
+                <p class="tweet-text">
+                    {{tweet.text}}
+                </p>
+                <img class="tweet-img" *ngIf="(+this.tweet._id % 3 === 0)" src='https://picsum.photos/id/{{tweet._id}}/400/200' alt="">    
+            </div>
+            <div class="tweet-actions">
+    
+            </div>
+        </section>
+        
     </section>
