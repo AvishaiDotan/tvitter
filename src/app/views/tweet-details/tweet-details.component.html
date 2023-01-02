@@ -5,8 +5,9 @@
     </section>
     <p>{{ tweet.text }}</p>
     <section class="replies">
-        <ul class="replies-list">
-            <li *ngFor="let replay of tweet.replies">{{ replay.text }}</li>
-        </ul>
+        <twitter-list [tweets]="tweet.replies"></twitter-list>
+        <!-- <ul class="replies-list">
+            <li *ngFor="let reply of tweet.replies">{{ reply.text }}</li>
+        </ul> -->
     </section>
 </section>

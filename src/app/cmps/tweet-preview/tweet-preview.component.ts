@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Tweet } from 'src/app/models/tweet.model';
 import {TwitterService} from '../../service/twitter.service'
@@ -11,11 +10,6 @@ import {TwitterService} from '../../service/twitter.service'
 export class TweetPreviewComponent {
 
     @Input() tweet!: Tweet
-    @Output() onSelect = new EventEmitter<string>()
-
-    onSelectTweetId() {
-        this.onSelect.emit(this.tweet._id)
-    }
 
     isImageShown(): boolean {
         return (+this.tweet._id % 3 === 0)

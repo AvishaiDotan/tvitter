@@ -1,10 +1,9 @@
-<section class="app-header">
-    <h1>Twitter</h1>
-    <nav>
-        <li>A</li>
-        <li>B</li>
-        <li>C</li>
-        <li>D</li>
-        <li>E</li>
-    </nav>
-</section>
+<h1 [routerLink]="['/home']" routerLinkActive="router-link-active" >Twitter</h1>
+<nav class="side-nav">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+    <!-- <a routerLink="/notifications" routerLinkActive="active"">Notifications</a>  -->
+    <a *ngIf="!user" routerLink="/signup" routerLinkActive="active">Signup</a>
+    <a *ngIf="user" routerLink="/profile" routerLinkActive="active">Profile</a>
+
+    <button *ngIf="user" (click)="logout()">Logout</button>
+</nav>
