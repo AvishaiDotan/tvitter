@@ -5,17 +5,14 @@ import { TwitterIndexComponent } from './views/twitter-index/twitter-index.compo
 import { TweetDetailsComponent } from './views/tweet-details/tweet-details.component';
 import { SignupComponent } from './views/signup/signup.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import { TweetResolver } from './service/tweet.resolver';
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: TwitterIndexComponent,
-    title: 'Home'
-  },
-  {
     path: 'tweet/:id',
     component: TweetDetailsComponent,
-    title: 'Tweet'
+    title: 'Tweet',
+    resolve: {tweet: TweetResolver}
   },
   {
     path: 'signup',
@@ -26,6 +23,11 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     title: 'Profile'
+  },
+  {
+    path: 'home',
+    component: TwitterIndexComponent,
+    title: 'Home'
   },
   {
     path: '**',

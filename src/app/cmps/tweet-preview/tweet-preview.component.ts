@@ -9,10 +9,10 @@ import {TwitterService} from '../../service/twitter.service'
 })
 export class TweetPreviewComponent {
     @Input() tweet!: Tweet
-    @Output() onSelect = new EventEmitter<string>()
+    // @Output() onSelect = new EventEmitter<string>()
 
-    onSelectTweetId() {
-        this.onSelect.emit(this.tweet._id)
-        console.log('selected tweet', this.tweet._id);
-    }
+    // onSelectTweetId() {
+    //     this.onSelect.emit(this.tweet._id)
+    //     console.log('selected tweet', this.tweet._id);
+    // }
 }
