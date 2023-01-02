@@ -37,6 +37,7 @@ export class TwitterService {
             username: '',
             replies: [],
             likes: [],
+            createdAt: Date.now()
         };
     }
 
@@ -72,6 +73,15 @@ export class TwitterService {
 
     public save(tweet: Tweet) {
         return tweet._id ? this._edit(tweet) : this._add(tweet);
+    }
+    
+    public saveAsReply(tweetId: string, newTweet: Tweet ) {
+        const originalTweet = this._tweetsDb.find( tweet => tweet._id === tweetId) 
+        if(originalTweet) {
+            originalTweet.replies.unshift({...this.getEmptyTweet(), ...newTweet})
+            return this._edit(originalTweet)
+        }
+        return of(null)
     }
 
     public setFilter(tweetFilter: TweetFilter) {

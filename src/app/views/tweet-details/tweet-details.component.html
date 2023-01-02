@@ -6,8 +6,7 @@
     <p>{{ tweet.text }}</p>
     <section class="replies">
         <twitter-list [tweets]="tweet.replies"></twitter-list>
-        <!-- <ul class="replies-list">
-            <li *ngFor="let reply of tweet.replies">{{ reply.text }}</li>
-        </ul> -->
     </section>
+
+    <add-reply [tweet]="tweet"></add-reply>
 </section>

@@ -23,14 +23,7 @@ export class TweetDetailsComponent implements OnInit, OnDestroy {
     subscription!: Subscription;
 
     async ngOnInit(): Promise<void> {
-        // const tweedId = this.route.snapshot.params['id']
-        // this.tweetId = tweedId
-
-        // this.route.params.subscribe(params => {
-        //   this.tweetId = params['id']
-        //   this.loadTweet()
-        // })
-
+      
         this.subscription = this.route.data.subscribe((data) => {
             this.tweet = data['tweet'];
         });
@@ -40,8 +33,5 @@ export class TweetDetailsComponent implements OnInit, OnDestroy {
         this.subscription.unsubscribe();
     }
 
-    // async loadTweet() {
-    //   const tweet = await lastValueFrom(this.twitterService.getById(this.tweetId))
-    //   this.tweet = tweet
-    // }
+   
 }
