@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { TwitterService } from 'src/app/service/twitter.service';
@@ -11,6 +11,10 @@ import { Tweet } from '../../models/tweet.model';
   styleUrls: ['./add-tweet-form.component.scss']
 })
 export class AddTweetFormComponent {
+
+  @Input() placeholderText: string = ''
+  @Input() tweetId: string = ''
+
   profileForm = this.formBuilder.group({
     text: ['', [Validators.required, Validators.minLength(3)]]
   })
@@ -27,7 +31,8 @@ export class AddTweetFormComponent {
       username: 'Test user',
      } as Tweet
 
-     this.twitterService.save(tweet)
+     if (this.tweetId) this.twitterService.saveAsReply(this.tweetId, tweet)
+     else this.twitterService.save(tweet)
      this.profileForm.reset()
   }
 }
