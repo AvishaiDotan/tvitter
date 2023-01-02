@@ -1,4 +1,7 @@
 <section class="twitter-app">
     <add-tweet-form [placeholderText]="'What\'s happening?'"></add-tweet-form>
-    <twitter-list [tweets]="tweets$ | async"></twitter-list>
+    <twitter-list
+        [tweets]="tweets$ | async"
+        (onLike)="handleLike($event)"
+    ></twitter-list>
 </section>

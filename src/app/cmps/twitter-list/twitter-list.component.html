@@ -1,3 +1,7 @@
 <section class="twitter-list">
-    <tweet-preview *ngFor="let tweet of tweets" [tweet]="tweet"></tweet-preview>
+    <tweet-preview
+        *ngFor="let tweet of tweets"
+        [tweet]="tweet"
+        (like)="onLike.emit($event)"
+    ></tweet-preview>
 </section>

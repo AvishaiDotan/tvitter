@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 import { Tweet } from 'src/app/models/tweet.model';
 import { TwitterService } from 'src/app/service/twitter.service';
 
@@ -18,5 +18,9 @@ export class TwitterIndexComponent implements OnInit {
     ngOnInit(): void {
         this.twitterService.query();
         this.tweets$ = this.twitterService.tweets$;
+    }
+
+    async handleLike(tweet: Tweet) {
+        await lastValueFrom(this.twitterService.toggleLike(tweet._id))
     }
 }

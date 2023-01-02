@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { lastValueFrom, Subscription } from 'rxjs';
 
 import { Tweet } from '../../models';
 import { TwitterService } from '../../service/twitter.service';
@@ -29,6 +29,10 @@ export class TweetDetailsComponent implements OnInit, OnDestroy {
 
     addTweet(tweet: Tweet) {
         this.tweetReplies.push(tweet)
+    }
+
+    async handleLike(tweet: Tweet) {
+        await lastValueFrom(this.twitterService.toggleLike(tweet._id))
     }
 
     ngOnDestroy(): void {

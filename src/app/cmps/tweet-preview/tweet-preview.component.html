@@ -3,4 +3,6 @@
         <h5>@{{tweet.user.username}}</h5>
         <h3>{{tweet.text}}</h3>
         <img *ngIf="(+this.tweet._id % 3 === 0)" src='https://picsum.photos/id/{{tweet._id}}/400/200' alt="">
+        <span>{{tweet.likes.length}}</span>
+        <button (click)="likeClick($event)">Like</button>
     </section>
