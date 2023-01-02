@@ -19,6 +19,10 @@ export class UserService {
     private _user$ = new BehaviorSubject<User | null>(null);
     public user$ = this._user$.asObservable();
 
+    get loggedInUser() {
+        return this._user$.value
+    }
+
     public loadUser() {
         const user = loadFromStorage(STORAGE_KEY);
         if (user) this._user$.next(user);
@@ -28,6 +32,7 @@ export class UserService {
         const user: User = {
             _id: this._makeId(),
             username,
+            avatarUrl: 'https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo.png'
         };
 
         this._user$.next(user);
