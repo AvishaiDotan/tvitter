@@ -8,6 +8,8 @@ import { UserService } from '../service/user.service';
 })
 export class AppComponent implements OnInit {
     constructor(private userService: UserService) {}
+    
+    isOpenedAdvancedSearchModal = false
 
     ngOnInit(): void {
         this.userService.loadUser()

@@ -14,11 +14,12 @@ export class TwitterIndexComponent implements OnInit {
     tweets!: Tweet[];
     tweets$!: Observable<Tweet[]>;
     selectedTweetId: string = '';
+    
 
     ngOnInit(): void {
         this.twitterService.query();
         this.tweets$ = this.twitterService.tweets$;
-
-        console.log('tweets in index', this.tweets$);
     }
+
+
 }

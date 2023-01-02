@@ -17,6 +17,7 @@ import { TweetFilterTagsComponent } from './cmps/tweet-filter-tags/tweet-filter-
 import { SignupComponent } from './views/signup/signup.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { AddReplyComponent } from './cmps/add-reply/add-reply.component';
+import { AdvancedSearchComponent } from './cmps/advanced-search/advanced-search.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AddReplyComponent } from './cmps/add-reply/add-reply.component';
     TweetFilterTagsComponent,
     SignupComponent,
     ProfileComponent,
-    AddReplyComponent
+    AddReplyComponent,
+    AdvancedSearchComponent
   ],
   imports: [
     BrowserModule,
