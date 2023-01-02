@@ -9,5 +9,5 @@
         <twitter-list [tweets]="tweetReplies"></twitter-list>
     </section>
 
-    <add-reply [tweet]="tweet"></add-reply>
+    <add-reply [tweet]="tweet" (onTweetSaved)="addTweet($event)"></add-reply>
 </section>

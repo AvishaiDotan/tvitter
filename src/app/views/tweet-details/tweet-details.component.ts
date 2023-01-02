@@ -27,6 +27,10 @@ export class TweetDetailsComponent implements OnInit, OnDestroy {
         });
     }
 
+    addTweet(tweet: Tweet) {
+        this.tweetReplies.push(tweet)
+    }
+
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }

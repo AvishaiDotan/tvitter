@@ -65,9 +65,10 @@ export class TwitterService {
         const originalTweet = this._tweetsDb.find( tweet => tweet._id === tweetId)
         if(originalTweet) {
             newTweet.belongsTo = tweetId
-            const { _id } = await lastValueFrom(this._add(newTweet))
-            originalTweet.replies.unshift(_id)
-            return lastValueFrom(this._edit(originalTweet))
+            const savedReply = await lastValueFrom(this._add(newTweet))
+            originalTweet.replies.unshift(savedReply._id)
+            await lastValueFrom(this._edit(originalTweet))
+            return savedReply
         }
         return Promise.resolve(null)
     }
