@@ -32,9 +32,7 @@ export class TwitterService {
 
     public advancedQuery(filter: {term: string, hashtag: string, account: string}): void {
         const tweets = this._tweetsDb.filter((tweet) => {
-            console.log(tweet);
-            
-            const isFromAccount = tweet.username.toLowerCase().includes(filter.account.replace('@', '').toLowerCase())
+            const isFromAccount = tweet.user.username.toLowerCase().includes(filter.account.replace('@', '').toLowerCase())
             const isContainHashtag = tweet.text.toLowerCase().includes(filter.hashtag.toLowerCase())
             const isContainTerm = tweet.text.toLowerCase().includes(filter.term.toLowerCase())
 

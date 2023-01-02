@@ -17,3 +17,9 @@ $clr0: #292F33;
 html {
     font-family: twitterchirp, Helvetica, -apple-system, 'Segoe UI', sans-serif;
 }
+
+a:-webkit-any-link {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
