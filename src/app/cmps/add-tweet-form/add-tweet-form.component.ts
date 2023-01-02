@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { lastValueFrom } from 'rxjs';
 import { TwitterService } from 'src/app/service/twitter.service';
+import { UserService } from 'src/app/service/user.service';
 
 import { Tweet } from '../../models/tweet.model';
 
@@ -14,6 +16,7 @@ export class AddTweetFormComponent {
 
   @Input() placeholderText: string = ''
   @Input() tweetId: string = ''
+  @Output() tweetSaved = new EventEmitter<Tweet>()
 
   profileForm = this.formBuilder.group({
     text: ['', [Validators.required, Validators.minLength(3)]]
@@ -21,18 +24,21 @@ export class AddTweetFormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private twitterService: TwitterService
+    private twitterService: TwitterService,
+    private userService: UserService
   ) {}
 
-  handleSubmit() {
+  async handleSubmit() {
      const { text } = this.profileForm.value
-     const tweet: Tweet = {
+     let tweet: Tweet = {
       text,
-      username: 'Test user',
+      user: this.userService.loggedInUser
      } as Tweet
 
-     if (this.tweetId) this.twitterService.saveAsReply(this.tweetId, tweet)
-     else this.twitterService.save(tweet)
+     if (this.tweetId) tweet = (await this.twitterService.saveAsReply(this.tweetId, tweet)) as Tweet
+     else tweet = await lastValueFrom(this.twitterService.save(tweet))
+
+     this.tweetSaved.emit(tweet)
      this.profileForm.reset()
   }
 }

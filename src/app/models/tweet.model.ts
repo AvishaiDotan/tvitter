@@ -2,10 +2,12 @@ import { User } from './user.model'
 
 export interface Tweet {
     _id: string;
+    belongsTo?: string;
+    tweetImgUrl?: string;
     text: string;
-    username: string;
+    user: User;
     createdAt: number;
-    replies: Tweet[];
+    replies: string[]; // list of tweetIds
     likes: User[];
 }
 

@@ -1,6 +1,6 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { lastValueFrom, Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { Tweet } from '../../models';
 import { TwitterService } from '../../service/twitter.service';
@@ -11,27 +11,27 @@ import { TwitterService } from '../../service/twitter.service';
     styleUrls: ['./tweet-details.component.scss'],
 })
 export class TweetDetailsComponent implements OnInit, OnDestroy {
-    constructor(
-        private twitterService: TwitterService,
-        private route: ActivatedRoute,
-        private router: Router
-    ) {}
-
-    tweetId!: string;
     tweet: Tweet | undefined;
-
+    tweetReplies: Tweet[] = []
     subscription!: Subscription;
 
+    constructor(
+        private twitterService: TwitterService,
+        private route: ActivatedRoute
+    ) {}
+
     async ngOnInit(): Promise<void> {
-      
         this.subscription = this.route.data.subscribe((data) => {
             this.tweet = data['tweet'];
+            this.tweetReplies = this.twitterService.getTweetReplies(this.tweet!._id);
         });
+    }
+
+    addTweet(tweet: Tweet) {
+        this.tweetReplies.push(tweet)
     }
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
-
-   
 }
