@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+$primary: #1DA1F2;
+$secondary: #00ACED;
+$primary-light: #0084B4;
+$secondary-dark: #0039A6;
+
+$clr2: #CCD6DD;
+$clr1: #657786;
+$clr0: #292F33;
+
+@import '../node_modules/scss-reset/src/scss/_reset.scss';

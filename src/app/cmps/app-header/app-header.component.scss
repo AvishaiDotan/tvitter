@@ -1,0 +1,13 @@
+
+:host {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.app-header {
+    width: 275px;
+    padding-inline: 12px;
+    @media screen and (max-width: 1280px) {
+        width: 100px;
+    }
+}

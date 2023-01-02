@@ -1,5 +1,16 @@
 .main-layout {
     display: grid;
-    grid-template-columns: 275px 600px 400px;
-    padding-inline: 192px;
+    grid-template-columns: minmax(50px, 450px) 600px 390px;
+
+    @media screen and (max-width: 1100px) {
+        grid-template-columns: minmax(90px, 450px) 600px 320px;
+    }
+
+    @media screen and (max-width: 1000px) {
+        grid-template-columns: 1fr 600px 1fr
+    }
+
+    @media screen and (max-width: 700px) {
+        grid-template-columns: 70px 1fr
+    }
 }
