@@ -30,7 +30,7 @@ export class UserService {
 
     public signup(username: string) {
         const user: User = {
-            _id: this._makeId(),
+            _id: this._makeNumId(3),
             username,
             avatarUrl: 'https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo.png'
         };
@@ -45,6 +45,17 @@ export class UserService {
         this._user$.next(null);
     }
 
+    private _makeNumId(length = 5) {
+        var text = '';
+        var possible =
+            '0123456789';
+        for (var i = 0; i < length; i++) {
+            text += possible.charAt(
+                Math.floor(Math.random() * possible.length)
+            );
+        }
+        return text;
+    }
     private _makeId(length = 5) {
         var text = '';
         var possible =
