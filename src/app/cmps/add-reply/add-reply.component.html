@@ -3,6 +3,7 @@
     <add-tweet-form
         [tweetId]="tweet._id"
         [placeholderText]="'Tweet your reply'"
+        [buttonText]="'Reply'"
         (tweetSaved)="onTweetSaved.emit($event)"
     ></add-tweet-form>
 </section>
