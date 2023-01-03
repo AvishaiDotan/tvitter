@@ -2,7 +2,7 @@
     <header>
         <h2 (click)="scroll(top)">Home</h2>
     </header>
-    <add-tweet-form [placeholderText]="'What\'s happening?'"></add-tweet-form>
+    <add-tweet-form [placeholderText]="'What\'s happening?'" (tweetSaved)="addTweet($event)"></add-tweet-form>
     <section class="show-more-action" (click)="showMore()" *ngIf="tweetsToShow">
         <button type="button" >Show more {{ tweetsToShow }}</button>
     </section>

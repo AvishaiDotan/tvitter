@@ -31,7 +31,12 @@ export class TwitterIndexComponent implements OnInit, OnDestroy {
 
         this.tweetsIntervalId = setInterval(() => {
             this.twitterService.addNewTweets()
-        }, 3000)
+        }, 10000)
+    }
+
+    addTweet(tweet: Tweet) {
+        this.tweets.unshift(tweet)
+        this.tweetsToShow -= 1
     }
 
     loadTweets(): void {
