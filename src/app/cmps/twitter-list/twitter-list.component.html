@@ -1,4 +1,4 @@
-<section class="twitter-list">
+<section class="twitter-list" [ngClass]="{ 'user-logged': user }">
     <tweet-preview
         *ngFor="let tweet of tweets"
         [tweet]="tweet"
