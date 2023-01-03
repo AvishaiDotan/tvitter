@@ -1,0 +1,59 @@
+@import '../../../styles.scss';
+
+.filter-tags {
+    margin-block-start: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    h1 {
+        height: 40px;
+        background-color: $clr2;
+        border-top-left-radius: 10px; 
+        border-top-right-radius: 10px; 
+        padding-inline-start: 15px;
+        font-weight: 600;
+        display: grid;
+        align-content: center;
+    }
+
+    .tags-list {
+        grid-template-columns: 1fr;
+
+        .tweet-count, .tweet-trend {
+            color: $clr1;
+            font-size: 12px;
+        }
+
+        .tweet-trend {
+            text-transform: capitalize;
+        }
+
+        .tweet-tag {
+            text-transform: capitalize;
+            font-size: 16px;
+
+        }
+
+        p {
+            padding-block: 2px;
+        }
+
+        li {
+            height: 80px;
+            background-color: $clr2;
+            padding-inline-start: 15px;
+            display: grid;
+            align-content: center;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #e1e1e1;
+            }
+        }
+
+        :last-child {
+            border-bottom-left-radius: 10px; 
+            border-bottom-right-radius: 10px; 
+        }
+    }
+}

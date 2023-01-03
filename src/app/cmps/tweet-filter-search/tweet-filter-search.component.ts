@@ -21,13 +21,13 @@ export class TweetFilterSearchComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.subscription = this.TwitterService.tweetFilter$.subscribe(filterBy => {
-            this.filterBy = filterBy
+            this.filterBy = {...filterBy}
         })
 
         this.handleSearchChange = debounce(this.doChangeFilter, 500)
     }
 
-    doChangeFilter() {
+    doChangeFilter() {  
         this.TwitterService.setFilter({ ...this.filterBy })
     }
 
