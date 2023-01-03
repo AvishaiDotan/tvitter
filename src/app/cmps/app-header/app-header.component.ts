@@ -18,7 +18,7 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
     constructor(
         private userService: UserService,
         private router: Router,
-        private TwitterService: TwitterService
+        public TwitterService: TwitterService
     ) {}
 
     ngOnInit(): void {
