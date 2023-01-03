@@ -56,15 +56,4 @@ export class UserService {
         }
         return text;
     }
-    private _makeId(length = 5) {
-        var text = '';
-        var possible =
-            '123456789';
-        for (var i = 0; i < length; i++) {
-            text += possible.charAt(
-                Math.floor(Math.random() * possible.length)
-            );
-        }
-        return text;
-    }
 }
