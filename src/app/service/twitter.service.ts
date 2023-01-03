@@ -22,11 +22,10 @@ export class TwitterService {
 
     public query() {
         const filterBy = this._tweetFilter$.value;
-        const tweets = this._tweetsDb
+        const tweets = this._tweetsDb.slice(filterBy.skip)
             .filter(({ text, belongsTo }) => {
                 return !belongsTo && text.toLowerCase().includes(filterBy.term.toLowerCase());
             })
-            .slice(filterBy.skip as number - 5)
 
         this._tweets$.next(tweets);
     }

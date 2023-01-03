@@ -18,12 +18,17 @@ export class TwitterIndexComponent implements OnInit, OnDestroy {
     tweetsCount: number = 0;
     tweetsCountSub!: Subscription
     tweetsIntervalId: any
+    totalTweets = 0
 
     ngOnInit(): void {
         this.loadTweets()
 
         this.tweetsCountSub = this.twitterService.tweets$
-            .pipe(map(tweets => tweets.slice(this.tweets.length).length))
+            .pipe(map(tweets => {
+                const count = tweets.slice(this.tweets.length).length
+                this.totalTweets = tweets.length
+                return count
+            }))
             .subscribe(count => this.tweetsCount = count)
 
         this.tweetsIntervalId = setInterval(() => {
@@ -48,7 +53,8 @@ export class TwitterIndexComponent implements OnInit, OnDestroy {
     }
 
     showMore() {
-        this.twitterService.setFilter({ skip: this.tweets.length, term: '' })
+        const skip = this.totalTweets - this.tweets.length
+        this.twitterService.setFilter({ skip, term: '' })
         this.loadTweets()
     }
 
