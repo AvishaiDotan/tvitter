@@ -38,14 +38,7 @@
         </div>
 
     </section>            
-    
-
-    <div class="header">
-        <img [src]="user.avatarUrl" alt="user profile" />
-        <p>{{ user.username }}</p>
-    </div>
     <section class="user-tweets">
-        <h3>Your tweets</h3>
         <twitter-list [tweets]="tweets" (onLike)="handleLike($event)"></twitter-list>
     </section>
 </section>

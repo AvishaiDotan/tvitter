@@ -46,6 +46,7 @@
         /* Resize the background image to cover the entire container */
         height: 250px;
         position: relative;
+        margin-block-start: 20px;
 
         img {
             position: absolute;
@@ -95,7 +96,7 @@
         .followers {
             display: flex;
             gap: 10px;
-            border-block-end: 0.2px solid #c7c7c7;
+            border-block-end: 0.2px solid #e1e1e1;
         }
     }
 
