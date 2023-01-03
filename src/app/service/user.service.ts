@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
+import { userDB } from './userDB';
 
 import { User } from '../models';
 
@@ -20,14 +21,14 @@ export class UserService {
     public user$ = this._user$.asObservable();
 
     get loggedInUser() {
-        return this._user$.value
+        return this._user$.value;
     }
 
     public loadUser() {
         let user = loadFromStorage(STORAGE_KEY);
         if (!user) {
-            user = this.logUserAsGuest()
-            saveToStorage(STORAGE_KEY, user)
+            user = this.logUserAsGuest();
+            saveToStorage(STORAGE_KEY, user);
         }
         this._user$.next(user);
     }
@@ -36,7 +37,8 @@ export class UserService {
         const user: User = {
             _id: this._makeNumId(2),
             username,
-            avatarUrl: 'https://api.lorem.space/image/face?w=150&h=150&hash=4F32C4CF'
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=4F32C4CF',
         };
 
         this._user$.next(user);
@@ -49,10 +51,15 @@ export class UserService {
         this._user$.next(null);
     }
 
+    public getRandomUser() {
+        const maxRnd = userDB.length;
+        const rndUserIdx = getRandomIntInclusive(0, maxRnd - 1)
+        return { ...userDB[rndUserIdx] }
+    }
+
     private _makeNumId(length = 5) {
         var text = '';
-        var possible =
-            '0123456789';
+        var possible = '0123456789';
         for (var i = 0; i < length; i++) {
             text += possible.charAt(
                 Math.floor(Math.random() * possible.length)
@@ -65,7 +72,14 @@ export class UserService {
         return {
             _id: this._makeNumId(2),
             username: 'Guest',
-            avatarUrl: 'https://api.lorem.space/image/face?w=150&h=150&hash=225E6693'
-        }
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=225E6693',
+        };
     }
+}
+
+export function getRandomIntInclusive(min: number, max: number) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }
