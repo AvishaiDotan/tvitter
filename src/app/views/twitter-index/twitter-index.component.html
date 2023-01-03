@@ -3,8 +3,8 @@
         <h2 (click)="scroll(top)">Home</h2>
     </header>
     <add-tweet-form [placeholderText]="'What\'s happening?'"></add-tweet-form>
-    <section *ngIf="tweetsToShow">
-        <button type="button" (click)="showMore()">Show more {{ tweetsToShow }}</button>
+    <section class="show-more-action" (click)="showMore()" *ngIf="tweetsToShow">
+        <button type="button" >Show more {{ tweetsToShow }}</button>
     </section>
     <twitter-list
         [tweets]="tweets"

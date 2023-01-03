@@ -22,11 +22,20 @@ export class TweetPreviewComponent{
         return 'LLL d'
     }
 
+
+
     @Output() like = new EventEmitter<Tweet>()
 
     likeClick(event: MouseEvent) {
         event.stopPropagation()
         this.like.emit(this.tweet)
         this.is_animating = !this.is_animating
+    }
+
+    get formattedTweetText() {
+        const strsArray =  this.tweet.text.split(" ")
+        return strsArray.map((str) => {
+            return (str.includes('#') ? `<span class="spany">${str}</span>` : str )
+        }).join(' ')
     }
 }

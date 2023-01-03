@@ -11,10 +11,11 @@
                 <span class="publish-date">{{ tweet.createdAt | date:getDatePipe(tweet.createdAt) }}</span>
             </h2>
         </header>
+        
 
         <div class="tweet-content">
-            <p class="tweet-text">
-                {{tweet.text}}
+            <p class="tweet-text" [innerHTML]="formattedTweetText">
+                {{formattedTweetText}}
             </p>
             <img class="tweet-img" *ngIf="(+this.tweet._id % 3 === 0)"
                 src='https://picsum.photos/id/{{tweet._id}}/400/200' alt="">

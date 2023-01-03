@@ -21,5 +21,21 @@
         font-weight: 800;
     }
 
+    .show-more-action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            background-color: #f7f9f9;
+            cursor: pointer;
+
+        }
+
+        button {
+            color: #2aa1f1;
+            height: 48px;
+        }
+    }
 
 }

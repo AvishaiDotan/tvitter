@@ -29,13 +29,14 @@
     .tweet-data {
         padding-inline: 10px;
         flex-grow: 1;
+
         header {
 
             h2 {
                 display: flex;
                 gap: 5px;
                 font-size: 15px;
-    
+
                 :first-child {
                     font-weight: 700;
                 }
@@ -54,7 +55,9 @@
             }
 
             .tweet-text {
-                padding-block-end: 10px;
+                & span {
+                    color: green
+                }
             }
         }
     }
@@ -69,11 +72,13 @@
         .like-action {
             display: flex;
             align-items: center;
+
             // justify-content: flex-end;
             span {
                 font-size: 14px;
                 color: $clr1;
             }
+
             .heart {
                 cursor: pointer;
                 background-color: transparent;
@@ -82,31 +87,38 @@
                 height: 42px;
                 width: 42px;
                 margin: 4px;
-                background-image:url( 'https://abs.twimg.com/a/1446542199/img/t1/web_heart_animation.png');
+                background-image: url('https://abs.twimg.com/a/1446542199/img/t1/web_heart_animation.png');
                 background-position: left;
-                background-repeat:no-repeat;
-                background-size:2900%;
+                background-repeat: no-repeat;
+                background-size: 2900%;
                 transition: background-color 0.4s;
 
                 &.is-liked {
-                    background-position:right;
+                    background-position: right;
                 }
-              }
-              
-              .heart:hover {
-                background-position:right;
+            }
+
+
+
+            .heart:hover {
+                background-position: right;
                 background-color: #cfcfcf;
-                
-              }
-              
-              .is_animating {
+
+            }
+
+            .is_animating {
                 animation: heart-burst .8s steps(28) 1;
-              }
-              
-              @keyframes heart-burst {
-                from {background-position:left;}
-                to { background-position:right;}
-              }
+            }
+
+            @keyframes heart-burst {
+                from {
+                    background-position: left;
+                }
+
+                to {
+                    background-position: right;
+                }
+            }
 
 
         }
@@ -115,31 +127,29 @@
             height: 42px;
             width: 42px;
             border-radius: 50%;
-            
+
             display: flex;
             justify-content: center;
             align-items: center;
 
             transition: background-color 0.4s;
 
-            &:has(svg:hover) {
+            &:hover {
                 background-color: #cfcfcf;
+
+                svg {
+                    filter: invert(46%) sepia(59%) saturate(712%) hue-rotate(162deg) brightness(102%) contrast(99%);
+                }
             }
+
             svg {
                 margin-block-start: 2px;
                 height: 13px;
                 filter: invert(95%) sepia(2%) saturate(3870%) hue-rotate(176deg) brightness(77%) contrast(97%);
 
-                &:hover {
-                    filter: invert(46%) sepia(59%) saturate(712%) hue-rotate(162deg) brightness(102%) contrast(99%);
-                    
-                }
+
             }
         }
     }
-
-    
-
-
 
 }
