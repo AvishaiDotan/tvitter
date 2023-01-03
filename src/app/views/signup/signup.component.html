@@ -1,12 +1,30 @@
 <section class="signup-page">
-    <label for="username">Username</label>
-    <input
-        type="text"
-        [(ngModel)]="username"
-        required
-        minlength="3"
-        id="username"
-        name="username"
-    />
-    <button (click)="handleSubmit()">Signup</button>
+    <header>
+        <h1>
+            Create your account
+        </h1>
+    </header>
+
+    <section class="auth-details">
+        <div>
+            <input
+                type="text"
+                [(ngModel)]="username"
+                required
+                minlength="3"
+                id="username"
+                name="username"
+                placeholder="Name"
+            />
+        </div>
+        <div>
+            <input type="text" placeholder="Password">
+        </div>
+    </section>
+
+    <div class="signup-action">
+        <button  (click)="handleSubmit()">Signup</button>
+    </div>
+
+    
 </section>
