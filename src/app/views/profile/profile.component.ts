@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { lastValueFrom, Subscription } from 'rxjs';
+import { lastValueFrom, Subscription, map } from 'rxjs';
 
 import { UserService } from '../../service/user.service';
 import { TwitterService } from '../../service/twitter.service';
@@ -15,6 +15,7 @@ export class ProfileComponent implements OnDestroy, OnInit {
     user!: User;
     userSubscription!: Subscription;
     tweets: Tweet[] = [];
+    tweetsSubscription!: Subscription;
     bcgImg: string = ''
 
     constructor(
@@ -31,8 +32,9 @@ export class ProfileComponent implements OnDestroy, OnInit {
             }
         );
 
-        this.tweets = this.twitterService.getAllTweets()
-            .filter(tweet => tweet.user._id === this.user._id)
+        this.tweetsSubscription = this.twitterService.tweets$
+            .pipe(map(tweets => tweets.filter(tweet => tweet.user._id === this.user._id)))
+            .subscribe(tweets => this.tweets = tweets)
     }
 
     async handleLike(tweet: Tweet) {
@@ -41,6 +43,7 @@ export class ProfileComponent implements OnDestroy, OnInit {
 
     ngOnDestroy(): void {
         this.userSubscription.unsubscribe();
+        this.tweetsSubscription.unsubscribe();
     }
 
     goBack() {
