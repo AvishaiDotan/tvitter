@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { debounce } from 'lodash';
 import { Subscription } from 'rxjs';
+
 import { Tweet, TweetFilter } from 'src/app/models';
 import { TwitterService } from 'src/app/service/twitter.service';
 
@@ -10,7 +10,7 @@ import { TwitterService } from 'src/app/service/twitter.service';
     styleUrls: ['./tweet-filter-tags.component.scss']
 })
 export class TweetFilterTagsComponent implements OnInit, OnDestroy {
-    constructor(private TwitterService: TwitterService) { }
+    constructor(private twitterService: TwitterService) { }
 
     filterBy!: TweetFilter
     filterSubscription!: Subscription
@@ -18,20 +18,13 @@ export class TweetFilterTagsComponent implements OnInit, OnDestroy {
 
     tweets!: Tweet[]
 
-
-    handleSearchChange: any = (): void => {
-        this.TwitterService.setFilter({ ...this.filterBy })
-    }
-
     ngOnInit(): void {
-        this.filterSubscription = this.TwitterService.tweetFilter$.subscribe(filterBy => {
+        this.filterSubscription = this.twitterService.tweetFilter$.subscribe(filterBy => {
             this.filterBy = filterBy
         })
 
-        this.tweets = this.TwitterService.getAllTweets()
+        this.tweets = this.twitterService.getAllTweets()
         this.tags = this.getTags()
-
-        this.handleSearchChange = debounce(this.handleSearchChange, 500)
     }
 
     ngOnDestroy(): void {
@@ -40,7 +33,7 @@ export class TweetFilterTagsComponent implements OnInit, OnDestroy {
 
     setFilter(tag: string): void {
         this.filterBy.term = tag
-        this.TwitterService.setFilter({ ...this.filterBy })
+        this.twitterService.setFilter({ ...this.filterBy })
     }
 
     getTags() {
