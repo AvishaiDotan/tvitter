@@ -1,9 +1,20 @@
 <section class="add-reply">
-    <h4>Replying to @{{ tweet.user.username }}</h4>
     <add-tweet-form
         [tweetId]="tweet._id"
         [placeholderText]="'Tweet your reply'"
         [buttonText]="'Reply'"
         (tweetSaved)="onTweetSaved.emit($event)"
     ></add-tweet-form>
+
+    <div class="tweet-actions">
+        
+        <div class="like-action">
+            <button (click)="likeClick($event)">
+                <div [ngClass]="{'is_animating': is_animating, 'is-liked': isLiked}"
+                    (animationend)="is_animating=!is_animating; isLiked = !isLiked" class="heart"></div>
+            </button>
+            <span>{{ tweet.likes.length }}</span>
+        </div>
+
+    </div>
 </section>

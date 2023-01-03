@@ -25,6 +25,7 @@ export class AddTweetFormComponent implements OnInit {
     })
 
     user!: User | null
+    isReply = false
 
     constructor(
         private formBuilder: FormBuilder,

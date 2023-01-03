@@ -38,4 +38,9 @@ export class TweetPreviewComponent{
             return (str.includes('#') ? `<span class="spany">${str}</span>` : str )
         }).join(' ')
     }
+
+    get gender() {
+        const num = +this.tweet.user._id
+        return (num % 2 === 0) ? 'Male' : 'Female'
+    }
 }

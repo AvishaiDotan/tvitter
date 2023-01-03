@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Tweet } from 'src/app/models/tweet.model';
 
 @Component({
@@ -9,5 +9,4 @@ import { Tweet } from 'src/app/models/tweet.model';
 export class TwitterListComponent {
   @Input() tweets!: Tweet[] | null
   @Output() onLike = new EventEmitter<Tweet>()
-
 }

@@ -138,10 +138,10 @@ export class TwitterService {
         return of(tweet);
     }
 
-    private _makeId(length = 5) {
+    private _makeId(length = 3) {
         var text = '';
         var possible =
-            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            '123456789';
         for (var i = 0; i < length; i++) {
             text += possible.charAt(
                 Math.floor(Math.random() * possible.length)

@@ -34,4 +34,72 @@
             }
         }
     }
+
+    .advanced-search {
+        .form {
+            width: 100%;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 25px;
+
+            >div {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+
+                flex-direction: column;
+                align-items: center;
+
+                p {
+                    padding-block-start: 5px;
+                    font-size: 13px;
+                    color: #cfcfcf;
+                    text-align: center;
+                }
+            }
+
+            div:has(input:focus) {
+
+                p {
+                    color: #9b9b9b;
+                }
+            }
+
+            input {
+                width: 80%;
+                height: 50px;
+                border: 0.1px solid lightgrey;
+                border-radius: 2px;
+                text-indent: 20px;
+
+                &:focus {
+                    border: 0.1px solid #1d9bf0;
+                }
+
+            }
+        }
+
+        .search-action {
+            padding-inline: 19px;
+            padding-block: 10px;
+            background-color: #8ecdf8;
+            border-radius: 2em;
+            color: white;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 650px) {
+            width: 100%;
+            height: 100%;
+            margin-block-start: 0px;
+        }
+
+    }
 }

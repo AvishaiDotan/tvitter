@@ -1,7 +1,7 @@
 <section [routerLink]="['/tweet', tweet._id]" class="tweet-preview">
     <!-- <section [routerLink]="['/tweet', 4]" class="tweet-preview"> -->
     <section class="avatar-img-container">
-        <img src="https://randomuser.me/api/portraits/med/men/{{tweet.user._id}}.jpg" alt="">
+        <img src="https://randomuser.me/api/portraits/med/men/{{tweet.user._id || 15}}.jpg" alt="">
     </section>
     <section class="tweet-data">
         <header class="tweet-details-header">
