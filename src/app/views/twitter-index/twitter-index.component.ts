@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { lastValueFrom, Observable } from 'rxjs';
+import { values } from 'lodash';
+import { lastValueFrom, Observable, tap } from 'rxjs';
 import { Tweet } from 'src/app/models/tweet.model';
 import { TwitterService } from 'src/app/service/twitter.service';
 
@@ -11,15 +12,21 @@ import { TwitterService } from 'src/app/service/twitter.service';
 export class TwitterIndexComponent implements OnInit {
     constructor(
         private twitterService: TwitterService
-    ) {}
+    ) { }
 
-    tweets!: Tweet[];
+    // tweets!: Tweet[];
     tweets$!: Observable<Tweet[]>;
+    tweetsToShow: Tweet[] = [];
     selectedTweetId: string = '';
 
     ngOnInit(): void {
+
         this.twitterService.query();
         this.tweets$ = this.twitterService.tweets$;
+
+        setInterval(() => {
+            this.twitterService.addNewTweets()
+        }, 3000)
     }
 
     async handleLike(tweet: Tweet) {
@@ -27,6 +34,7 @@ export class TwitterIndexComponent implements OnInit {
     }
 
     scroll(el: HTMLElement) {
-        el.scrollIntoView({behavior: 'smooth'});
+        el.scrollIntoView({ behavior: 'smooth' });
     }
+
 }

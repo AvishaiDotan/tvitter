@@ -142,4 +142,9 @@ export class TwitterService {
     public toggleAdvancedSearchModal() {
         this._isAdvancedSearchModal$.next(!this._isAdvancedSearchModal$.getValue())
     }
+
+    public addNewTweets() {
+        const newTweets = this._tweetsDb.slice(0, 5)
+        this._tweets$.next([...this._tweets$.value, ...newTweets])
+    }
 }

@@ -39,5 +39,9 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
         this.router.navigate(['/']);
     }
 
+    toggleSearchModal() {
+        this.TwitterService.toggleAdvancedSearchModal()
+    }
+
     
 }

@@ -23,3 +23,7 @@ a:-webkit-any-link {
     cursor: pointer;
     text-decoration: none;
 }
+
+::placeholder {
+    color: #88959e;
+}
