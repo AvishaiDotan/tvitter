@@ -1,0 +1,62 @@
+.signup-page {
+
+    header {
+        display: flex;
+        justify-content: center;
+        margin-block-end: 60px;
+
+        h1 {
+            font-size: 25px;
+            font-weight: 700;
+            padding-block: 17px;
+        }
+    }
+
+    .auth-details {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        > * {
+            width: 50%;
+            background-color: #eff3f4;
+            height: 42px;
+            border-radius: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            margin-block-start: 20px;
+
+        
+            &:has(>input:focus) {
+                background-color: transparent;
+                outline: 0.5px solid #1d9bf0;
+            }
+
+            input {
+                background-color: transparent;
+                border: 0;
+                font-size: 17px;
+                margin-inline-start: 20px;
+            }
+        }
+    }
+
+    .signup-action {
+        margin-block-start: 60px;
+        display: flex;
+        justify-content: center;
+
+        
+        button {
+            width: 25%;
+            background-color: rgb(30, 30, 30);
+            color: white;
+            padding-inline: 20px;
+            padding-block: 17px;
+            border-radius: 2em;
+        }
+    }
+}

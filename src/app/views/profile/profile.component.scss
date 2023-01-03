@@ -1,0 +1,103 @@
+.profile {
+
+    header {
+        height: 53px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+
+
+        .back-action-container {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: 0.4s;
+
+            &:hover {
+                background-color: #cfcfcf;
+                cursor: pointer;
+
+            }
+
+            svg {
+                height: 20px;
+            }
+        }
+
+
+
+        h1 {
+            margin-inline-start: 40px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+
+    .profile-imgs {
+        background-position: center;
+        /* Center the image */
+        background-repeat: no-repeat;
+        /* Do not repeat the image */
+        background-size: cover;
+        /* Resize the background image to cover the entire container */
+        height: 250px;
+        position: relative;
+        margin-block-start: 20px;
+
+        img {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            border-radius: 50%;
+            filter: grayscale(0.8);
+            transition: 0.4s;
+
+
+
+            &:hover {
+                filter: grayscale(0)
+            }
+        }
+    }
+
+    .user-data {
+        margin-block-start: 20px;
+
+        .username {
+            font-weight: 600;
+        }
+
+        .user-account {
+            margin-block-end: 10px;
+            color: rgb(149, 142, 142);
+        }
+
+        .user-signup-date {
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-block-end: 10px;
+
+            svg {
+                height: 20px;
+                filter: invert(61%) sepia(8%) saturate(173%) hue-rotate(314deg) brightness(93%) contrast(86%)
+            }
+
+            span {
+                color: #bcafaf;
+            }
+        }
+
+        .followers {
+            display: flex;
+            gap: 10px;
+            border-block-end: 0.2px solid #e1e1e1;
+        }
+    }
+
+}

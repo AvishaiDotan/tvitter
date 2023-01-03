@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { lastValueFrom, map, Subscription } from 'rxjs';
+import { lastValueFrom, map, Observable, Subscription } from 'rxjs';
+import { User } from 'src/app/models';
 
 import { Tweet } from 'src/app/models/tweet.model';
 import { TwitterService } from 'src/app/service/twitter.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
     selector: 'twitter-index',
@@ -11,16 +13,19 @@ import { TwitterService } from 'src/app/service/twitter.service';
 })
 export class TwitterIndexComponent implements OnInit, OnDestroy {
     constructor(
-        private twitterService: TwitterService
+        private twitterService: TwitterService,
+        private userService: UserService
     ) { }
 
     tweets: Tweet[] = [];
     tweetsToShow: number = 0;
     tweetsCountSub!: Subscription
     tweetsFilterSub!: Subscription
-    tweetsIntervalId: any
+    user!: User | null
+    userSubscription!: Subscription
 
     ngOnInit(): void {
+        this.userSubscription = this.userService.user$.subscribe(user => this.user = user);
         this.loadTweets()
 
         this.tweetsCountSub = this.twitterService.tweets$
@@ -28,10 +33,6 @@ export class TwitterIndexComponent implements OnInit, OnDestroy {
             .subscribe(count => this.tweetsToShow = count)
 
         this.tweetsFilterSub = this.twitterService.tweetFilter$.subscribe(() => this.loadTweets())
-
-        this.tweetsIntervalId = setInterval(() => {
-            this.twitterService.addNewTweets()
-        }, 10000)
     }
 
     addTweet(tweet: Tweet) {
@@ -61,8 +62,8 @@ export class TwitterIndexComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        clearInterval(this.tweetsIntervalId)
         this.tweetsCountSub.unsubscribe()
         this.tweetsFilterSub.unsubscribe()
+        this.userSubscription.unsubscribe()
     }
 }

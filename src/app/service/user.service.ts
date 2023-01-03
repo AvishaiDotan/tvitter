@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
+import { userDB } from './userDB';
 
 import { User } from '../models';
 
@@ -20,19 +21,24 @@ export class UserService {
     public user$ = this._user$.asObservable();
 
     get loggedInUser() {
-        return this._user$.value
+        return this._user$.value;
     }
 
     public loadUser() {
-        const user = loadFromStorage(STORAGE_KEY);
-        if (user) this._user$.next(user);
+        let user = loadFromStorage(STORAGE_KEY);
+        if (!user) {
+            user = this.logUserAsGuest();
+            saveToStorage(STORAGE_KEY, user);
+        }
+        this._user$.next(user);
     }
 
     public signup(username: string) {
         const user: User = {
-            _id: this._makeId(),
+            _id: this._makeNumId(2),
             username,
-            avatarUrl: 'https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo.png'
+            avatarUrl:
+                'https://cdn.lorem.space/images/face/.cache/150x150/austin-wade-X6Uj51n5CE8-unsplash.jpg',
         };
 
         this._user$.next(user);
@@ -45,10 +51,15 @@ export class UserService {
         this._user$.next(null);
     }
 
-    private _makeId(length = 5) {
+    public getRandomUser() {
+        const maxRnd = userDB.length;
+        const rndUserIdx = getRandomIntInclusive(0, maxRnd - 1)
+        return { ...userDB[rndUserIdx] }
+    }
+
+    private _makeNumId(length = 5) {
         var text = '';
-        var possible =
-            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var possible = '0123456789';
         for (var i = 0; i < length; i++) {
             text += possible.charAt(
                 Math.floor(Math.random() * possible.length)
@@ -56,4 +67,19 @@ export class UserService {
         }
         return text;
     }
+
+    private logUserAsGuest() {
+        return {
+            _id: this._makeNumId(2),
+            username: 'Guest',
+            avatarUrl:
+                'https://cdn.lorem.space/images/face/.cache/150x150/jurica-koletic-7YVZYZeITc8-unsplash.jpg',
+        };
+    }
+}
+
+export function getRandomIntInclusive(min: number, max: number) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }

@@ -1,12 +1,14 @@
 <form class="add-tweet-form" [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
-    <section class="tweet-body">
+    <section  class="tweet-body">
         <div class="user-avatar-container">
-            <img src="https://randomuser.me/api/portraits/med/men/{{user?._id || 0}}.jpg" alt="">
+            <!-- <img src="https://randomuser.me/api/portraits/med/men/{{user?._id || 0}}.jpg" alt=""> -->
+            <img [src]="user?.avatarUrl || 'https://cdn.lorem.space/images/face/.cache/150x150/oliver-ragfelt-khV4fTy6-D8-unsplash.jpg'">
+            <!-- <img src="https://api.lorem.space/image/face?w=150&h=150"> -->
         </div>
         <input id="text" type="text" formControlName="text" minlength="3" required placeholder={{placeholderText}}>
     </section>
     <div class="underline"></div>
     <div class="form-actions">
-        <button type="submit" [disabled]="!profileForm.valid">{{buttonText}}</button>
+        <button class="add-tweet-action" type="submit" [disabled]="!profileForm.valid">{{buttonText}}</button>
     </div>
 </form>

@@ -30,6 +30,7 @@
         width: calc(100% - 50px);
         border: 0;
         margin-block: 5px;
+        text-indent: 20px;
     }
 
     .form-actions {
@@ -55,12 +56,14 @@
     .underline {
         width: calc(100% - 67px);
         height: 1px;
-        background-color: gainsboro;
-        /* margin: auto; */
+        background-color: #dcdcdc;
         margin-block: 10px;
         margin-inline-start: 55px;
         margin-inline-end: 100px;
     }
+
+
+
 }
 
 

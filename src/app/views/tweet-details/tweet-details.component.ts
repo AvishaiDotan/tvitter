@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { lastValueFrom, Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { lastValueFrom, Observable, Subscription } from 'rxjs';
+import { UserService } from 'src/app/service/user.service';
 
-import { Tweet } from '../../models';
+import { Tweet, User } from '../../models';
 import { TwitterService } from '../../service/twitter.service';
 
 @Component({
@@ -14,13 +15,18 @@ export class TweetDetailsComponent implements OnInit, OnDestroy {
     tweet: Tweet | undefined;
     tweetReplies: Tweet[] = []
     subscription!: Subscription;
+    user$!: Observable<User | null>
 
     constructor(
         private twitterService: TwitterService,
-        private route: ActivatedRoute
+        private userService: UserService,
+        private route: ActivatedRoute,
+        private router: Router
     ) {}
 
     async ngOnInit(): Promise<void> {
+        this.user$ = this.userService.user$
+
         this.subscription = this.route.data.subscribe((data) => {
             this.tweet = data['tweet'];
             this.tweetReplies = this.twitterService.getTweetReplies(this.tweet!._id);
@@ -29,6 +35,7 @@ export class TweetDetailsComponent implements OnInit, OnDestroy {
 
     addTweet(tweet: Tweet) {
         this.tweetReplies.push(tweet)
+        console.log('replies:', this.tweetReplies);
     }
 
     async handleLike(tweet: Tweet) {
@@ -37,5 +44,9 @@ export class TweetDetailsComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
+    }
+
+    goBack() {
+        this.router.navigate(['/']);
     }
 }

@@ -1,7 +1,8 @@
 <section *ngIf="isOpenModal | async" class="dark-overlay">
     <section class="add-tweet-modal">
         <header>
-            <svg
+            <div class="exit-icon-wrapper">
+                <svg
                 (click)="twitterService.toggleAddTweetModal()"
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -14,7 +15,9 @@
                     d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
                 />
             </svg>
-            <add-tweet-form (tweetSaved)="twitterService.toggleAddTweetModal()"></add-tweet-form>
+            </div>
+            
         </header>
+        <add-tweet-form (tweetSaved)="twitterService.toggleAddTweetModal()"></add-tweet-form>
     </section>
 </section>
