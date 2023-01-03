@@ -2,7 +2,7 @@
     <section  class="tweet-body">
         <div class="user-avatar-container">
             <!-- <img src="https://randomuser.me/api/portraits/med/men/{{user?._id || 0}}.jpg" alt=""> -->
-            <img [src]="user.avatarUrl || 'https://api.lorem.space/image/face?w=150&h=150'">
+            <img [src]="user?.avatarUrl || 'https://api.lorem.space/image/face?w=150&h=150'">
             <!-- <img src="https://api.lorem.space/image/face?w=150&h=150"> -->
         </div>
         <input id="text" type="text" formControlName="text" minlength="3" required placeholder={{placeholderText}}>

@@ -24,7 +24,7 @@ export class AddTweetFormComponent implements OnInit, OnDestroy {
         text: ['', [Validators.required, Validators.minLength(3)]]
     })
 
-    user!: User
+    user?: User | null
     userSubscription!: Subscription
     isReply = false
 
@@ -35,7 +35,7 @@ export class AddTweetFormComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.userSubscription = this.userService.user$.subscribe(user => this.user = user as User)
+        this.userSubscription = this.userService.user$.subscribe(user => this.user = user)
     }
 
     async handleSubmit() {
