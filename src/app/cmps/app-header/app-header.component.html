@@ -92,12 +92,13 @@
     </a>
 
     <button
+        *ngIf="user"
         class="tweet-btn-desktop"
         (click)="twitterService.toggleAddTweetModal()"
     >
         Tweet
     </button>
-    
+
     <div
         class="tweet-btn-mobile"
         (click)="twitterService.toggleAddTweetModal()">

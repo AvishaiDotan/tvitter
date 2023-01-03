@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { lastValueFrom, map, Subscription } from 'rxjs';
+import { lastValueFrom, map, Observable, Subscription } from 'rxjs';
+import { User } from 'src/app/models';
 
 import { Tweet } from 'src/app/models/tweet.model';
 import { TwitterService } from 'src/app/service/twitter.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
     selector: 'twitter-index',
@@ -11,15 +13,18 @@ import { TwitterService } from 'src/app/service/twitter.service';
 })
 export class TwitterIndexComponent implements OnInit, OnDestroy {
     constructor(
-        private twitterService: TwitterService
+        private twitterService: TwitterService,
+        private userService: UserService
     ) { }
 
     tweets: Tweet[] = [];
     tweetsToShow: number = 0;
     tweetsCountSub!: Subscription
     tweetsFilterSub!: Subscription
+    user$!: Observable<User | null>
 
     ngOnInit(): void {
+        this.user$ = this.userService.user$
         this.loadTweets()
 
         this.tweetsCountSub = this.twitterService.tweets$
