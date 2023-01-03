@@ -17,6 +17,7 @@ export class AddTweetFormComponent implements OnInit {
 
     @Input() placeholderText: string = 'What\'s happening'
     @Input() tweetId: string = ''
+    @Input() buttonText: string = 'Tweet'
     @Output() tweetSaved = new EventEmitter<Tweet>()
 
     profileForm = this.formBuilder.group({
