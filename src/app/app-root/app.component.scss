@@ -1,3 +1,8 @@
+:host {
+    display: flex;
+    justify-content: center;
+}
+
 .main-layout {
     display: grid;
     grid-template-columns: minmax(50px, 450px) 600px 390px;

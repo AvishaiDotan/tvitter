@@ -95,10 +95,9 @@ export class TwitterService {
     }
 
     public async saveAsReply(tweetId: string, newTweet: Tweet) {
-        const originalTweet = this._tweetsDb.find( tweet => tweet._id === tweetId)
+        const originalTweet = this._tweetsDb.find(tweet => tweet._id === tweetId)
         if(originalTweet) {
-            newTweet.belongsTo = tweetId
-            const savedReply = await lastValueFrom(this._add(newTweet))
+            const savedReply = await lastValueFrom(this._add(newTweet, tweetId))
             originalTweet.replies.unshift(savedReply._id)
             await lastValueFrom(this._edit(originalTweet))
             return savedReply
@@ -111,8 +110,9 @@ export class TwitterService {
         this.query();
     }
 
-    private _add(tweet: Tweet) {
+    private _add(tweet: Tweet, belongsTo?: string) {
         tweet = this._createTweet(tweet.text, tweet.user)
+        if (belongsTo) tweet.belongsTo = belongsTo
         this._tweetsDb.unshift(tweet);
         this._tweets$.next(this._tweetsDb);
         return of(tweet);
