@@ -4,9 +4,10 @@ export const tweetsDB = [
         tweetImgUrl: 'https://picsum.photos/id/{{tweet._id}}/400/200',
         text: 'Just finished an awesome game of football with my friends! #football',
         user: {
-            _id: 'e5f6g7h8',
-            username: 'janeDoe',
-            avatarUrl: 'https://pbs.twimg.com/media/DtHxuHlUwAE7R_b.jpg',
+            _id: 'user1',
+            username: 'jane',
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=8B7BCDC2',
         },
         createdAt: 1605343051000,
         replies: ['i9j0k1l2', 'm3n4o5p6'],
@@ -29,10 +30,10 @@ export const tweetsDB = [
         tweetImgUrl: 'https://pbs.twimg.com/media/123456789876543210.jpg',
         text: 'Just tried the best sushi in town! #foodie #sushi',
         user: {
-            _id: '1',
-            username: 'johnsmith',
+            _id: 'user2',
+            username: 'john',
             avatarUrl:
-                'https://pbs.twimg.com/profile_images/123456789876543210/abcdefg.jpg',
+                'https://api.lorem.space/image/face?w=150&h=150&hash=500B67FB',
         },
         createdAt: 1614681412000,
         replies: ['2'],
@@ -52,7 +53,7 @@ export const tweetsDB = [
             _id: '1',
             username: 'johnsmith',
             avatarUrl:
-                'https://pbs.twimg.com/profile_images/123456789876543210/abcdefg.jpg',
+                'https://api.lorem.space/image/face?w=150&h=150&hash=A89D0DE6',
         },
         createdAt: 1614681412000,
         replies: [],
@@ -70,10 +71,10 @@ export const tweetsDB = [
         tweetImgUrl: 'https://pbs.twimg.com/media/098765432123456789.jpg',
         text: "Obsessed with this new yoga class I'm taking. #wellness #yoga",
         user: {
-            _id: '2',
-            username: 'janesmith',
+            _id: 'user3',
+            username: 'sarah',
             avatarUrl:
-                'https://pbs.twimg.com/profile_images/098765432112345678/hijklmn.jpg',
+                'https://api.lorem.space/image/face?w=150&h=150&hash=A89D0DE6',
         },
         createdAt: 1614681412000,
         replies: ['1'],
@@ -92,9 +93,10 @@ export const tweetsDB = [
         avatarUrl: 'https://example.com/avatars/john_doe.png',
         text: "Who's ready for the big game tonight?! #football #sport",
         user: {
-            _id: '4',
-            username: 'john_doe',
-            avatarUrl: 'https://example.com/avatars/john_doe.png',
+            _id: 'user4',
+            username: 'mike',
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=225E6693',
         },
         createdAt: 162345987,
         replies: ['5', '6'],
@@ -117,9 +119,10 @@ export const tweetsDB = [
         avatarUrl: 'https://example.com/avatars/jane_doe.png',
         text: 'Had the best time exploring the city on my bike today. #cycling #adventure',
         user: {
-            _id: '5',
-            username: 'jane_doe',
-            avatarUrl: 'https://example.com/avatars/jane_doe.png',
+            _id: 'user5',
+            username: 'lisa',
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=9D9539E7',
         },
         createdAt: 162345989,
         replies: ['7'],
@@ -137,9 +140,10 @@ export const tweetsDB = [
         avatarUrl: 'https://example.com/avatars/bob_smith.png',
         text: "Thrilled to announce that I'll be running my first marathon next month! #fitness #running",
         user: {
-            _id: '6',
-            username: 'bob_smith',
-            avatarUrl: 'https://example.com/avatars/bob_smith.png',
+            _id: 'user6',
+            username: 'alex',
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=BDC01094',
         },
         createdAt: 162346987,
         replies: [],
@@ -157,9 +161,10 @@ export const tweetsDB = [
         avatarUrl: 'https://example.com/avatars/bob_smith.png',
         text: "Just finished my latest painting and I'm loving how it turned out. #art #creativity",
         user: {
-            _id: '8',
-            username: 'bob_smith',
-            avatarUrl: 'https://example.com/avatars/bob_smith.png',
+            _id: 'user7',
+            username: 'samuel',
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=7F5AE56A',
         },
         createdAt: 162345987,
         replies: ['9'],
@@ -181,12 +186,12 @@ export const tweetsDB = [
         username: 'jane_doe',
         avatarUrl: 'https://example.com/avatars/jane_doe.png',
         tweetImgUrl: 'https://example.com/tweet_images/9.png',
-        text: "So proud of my little brother for scoring the winning goal in his soccer game. #family #sports"
-        ,
+        text: 'So proud of my little brother for scoring the winning goal in his soccer game. #family #sports',
         user: {
-            _id: '9',
-            username: 'jane_doe',
-            avatarUrl: 'https://example.com/avatars/jane_doe.png',
+            _id: 'user8',
+            username: 'david',
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=4F32C4CF',
         },
         createdAt: 162345989,
         replies: ['11'],
@@ -202,12 +207,12 @@ export const tweetsDB = [
         _id: '10',
         username: 'jane_doe',
         avatarUrl: 'https://example.com/avatars/jane_doe.png',
-        text: "Can't wait to try out this new vegan restaurant everyone's been raving about. #vegan #foodie"
-        ,
+        text: "Can't wait to try out this new vegan restaurant everyone's been raving about. #vegan #foodie",
         user: {
-            _id: '10',
-            username: 'jane_doe',
-            avatarUrl: 'https://example.com/avatars/jane_doe.png',
+            _id: 'user9',
+            username: 'jessica',
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=B0E33EF4',
         },
         createdAt: 162346987,
         replies: [],
@@ -224,12 +229,12 @@ export const tweetsDB = [
         username: 'john_doe',
         avatarUrl: 'https://example.com/avatars/john_doe.png',
         tweetImgUrl: 'https://example.com/tweet_images/11.png',
-        text: "Excited to be visiting a new country for the first time next month! #travels #explore"
-        ,
+        text: 'Excited to be visiting a new country for the first time next month! #travels #explore',
         user: {
-            _id: '11',
-            username: 'john_doe',
-            avatarUrl: 'https://example.com/avatars/john_doe.png',
+            _id: 'user10',
+            username: 'matt',
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=2D297A22',
         },
         createdAt: 162345987,
         replies: ['12'],
@@ -250,12 +255,12 @@ export const tweetsDB = [
         _id: '12',
         username: 'jane_doe',
         avatarUrl: 'https://example.com/avatars/jane_doe.png',
-        text: "Feeling so inspired after attending a workshop on mindfulness. #wellness #mindfulness"
-        ,
+        text: 'Feeling so inspired after attending a workshop on mindfulness. #wellness #mindfulness',
         user: {
-            _id: '12',
-            username: 'jane_doe',
-            avatarUrl: 'https://example.com/avatars/jane_doe.png',
+            _id: 'user2',
+            username: 'john',
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=500B67FB',
         },
         createdAt: 162345989,
         replies: ['14'],
@@ -271,12 +276,12 @@ export const tweetsDB = [
         _id: '13',
         username: 'jane_doe',
         avatarUrl: 'https://example.com/avatars/jane_doe.png',
-        text: "Just finished building my first app with #reactjs and I'm loving it! #coding #tech"
-        ,
+        text: "Just finished building my first app with #reactjs and I'm loving it! #coding #tech",
         user: {
-            _id: '13',
-            username: 'jane_doe',
-            avatarUrl: 'https://example.com/avatars/jane_doe.png',
+            _id: 'user4',
+            username: 'mike',
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=225E6693',
         },
         createdAt: 162346987,
         replies: [],
@@ -293,9 +298,10 @@ export const tweetsDB = [
         tweetImgUrl: 'https://example.com/tweet_images/14.png',
         text: 'TypeScript is my go-to for any project!',
         user: {
-            _id: '14',
-            username: 'bob_smith',
-            avatarUrl: 'https://example.com/avatars/bob_smith.png',
+            _id: 'user6',
+            username: 'alex',
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=BDC01094',
         },
         createdAt: 162345987,
         replies: ['15', '16'],
@@ -315,12 +321,12 @@ export const tweetsDB = [
     {
         _id: '15',
         tweetImgUrl: 'https://example.com/tweet_images/15.png',
-        text: "Can't believe I just hiked to the top of that mountain. Such a rush! #adventure #outdoors"
-        ,
+        text: "Can't believe I just hiked to the top of that mountain. Such a rush! #adventure #outdoors",
         user: {
-            _id: '15',
-            username: 'jane_doe',
-            avatarUrl: 'https://example.com/avatars/jane_doe.png',
+            _id: 'user10',
+            username: 'matt',
+            avatarUrl:
+                'https://api.lorem.space/image/face?w=150&h=150&hash=2D297A22',
         },
         createdAt: 162345989,
         replies: ['17'],

@@ -27,9 +27,10 @@ export class TweetDetailsComponent implements OnInit, OnDestroy {
             this.tweetReplies = this.twitterService.getTweetReplies(this.tweet!._id);
         });
     }
-
+    
     addTweet(tweet: Tweet) {
         this.tweetReplies.push(tweet)
+        console.log('replies:', this.tweetReplies);
     }
 
     async handleLike(tweet: Tweet) {

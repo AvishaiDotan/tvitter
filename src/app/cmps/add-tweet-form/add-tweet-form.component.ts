@@ -48,6 +48,5 @@ export class AddTweetFormComponent implements OnInit {
 
     ngOnInit() {
         this.user = this.userService.loggedInUser
-        console.log('placeholderText:', this.placeholderText);
     }
 }

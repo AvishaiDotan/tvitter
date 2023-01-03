@@ -2,6 +2,7 @@
     <!-- <section [routerLink]="['/tweet', 4]" class="tweet-preview"> -->
     <section class="avatar-img-container">
         <img src="https://randomuser.me/api/portraits/med/men/{{tweet.user._id}}.jpg" alt="">
+        <!-- <img [src]="tweet.user?.avatarUrl || 'https://api.lorem.space/image/face?w=150&h=150'"> -->
     </section>
     <section class="tweet-data">
         <header class="tweet-details-header">
