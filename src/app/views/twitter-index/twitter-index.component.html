@@ -4,7 +4,7 @@
     </header>
     <add-tweet-form [placeholderText]="'What\'s happening?'" (tweetSaved)="addTweet($event)"></add-tweet-form>
     <section class="show-more-action" (click)="showMore()" *ngIf="tweetsToShow">
-        <button type="button" >Show more {{ tweetsToShow }}</button>
+        <button type="button" >Show {{ tweetsToShow }} Tweets</button>
     </section>
     <twitter-list
         [tweets]="tweets"
