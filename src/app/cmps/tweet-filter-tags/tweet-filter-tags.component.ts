@@ -14,6 +14,7 @@ export class TweetFilterTagsComponent implements OnInit, OnDestroy {
 
     filterBy!: TweetFilter
     filterSubscription!: Subscription
+    tags: [string, number][] = []
 
     tweets!: Tweet[]
 
@@ -28,6 +29,7 @@ export class TweetFilterTagsComponent implements OnInit, OnDestroy {
         })
 
         this.tweets = this.TwitterService.getAllTweets()
+        this.tags = this.getTags()
 
         this.handleSearchChange = debounce(this.handleSearchChange, 500)
     }
@@ -41,7 +43,7 @@ export class TweetFilterTagsComponent implements OnInit, OnDestroy {
         this.TwitterService.setFilter({ ...this.filterBy })
     }
 
-    get tags() {
+    getTags() {
         const hashtags = this.tweets.reduce((accumulator: { [key: string]: number }, tweet) => {
             const tweetHashtags = extractHashtags(tweet.text);
             tweetHashtags.forEach(hashtag => {
@@ -55,7 +57,7 @@ export class TweetFilterTagsComponent implements OnInit, OnDestroy {
 
             });
 
-            
+
             return accumulator
         }, {});
 
@@ -63,7 +65,7 @@ export class TweetFilterTagsComponent implements OnInit, OnDestroy {
         hashtagsArray.sort((a, b) => b[1] - a[1]);
         const res = hashtagsArray.slice(0, 10)
 
-        
+
         return res //res.map(([hashtag]) => hashtag);
 
 
