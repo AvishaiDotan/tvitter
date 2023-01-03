@@ -15,7 +15,7 @@
         font-size: 20px;
     }
 
-    >* {
+    > * {
         display: flex;
         align-items: center;
         gap: 20px;
@@ -68,13 +68,12 @@
     }
 
     a:hover:not(:first-child) {
-        background-color: rgb(207, 207, 207); 
+        background-color: rgb(207, 207, 207);
     }
 
-
-
     a:first-child svg {
-        filter: invert(58%) sepia(22%) saturate(6848%) hue-rotate(179deg) brightness(94%) contrast(101%);
+        filter: invert(58%) sepia(22%) saturate(6848%) hue-rotate(179deg)
+            brightness(94%) contrast(101%);
     }
 
     .tweet-btn-desktop {
@@ -94,13 +93,14 @@
         margin-block-start: 40px;
         justify-content: center;
         transform: translateX(-5px);
-        
+        &:hover {
+            background-color: rgb(24, 133, 205);
+        }
     }
 
     @media screen and (max-width: 1280px) {
-
         a:hover:first-child {
-            background-color: rgb(207, 207, 207); 
+            background-color: rgb(207, 207, 207);
         }
 
         a span,
