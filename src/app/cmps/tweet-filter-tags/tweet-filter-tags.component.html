@@ -2,9 +2,12 @@
     <h1>
         Trends for you
     </h1>
-    <ul>
-        <li *ngFor="let tag of tags">
-            <p (click)="setFilter(tag)">{{tag}}</p>
+    <ul class="tags-list">
+        <li *ngFor="let tag of tags" (click)="setFilter(tag[0])"> 
+            <p class="tweet-trend">{{tag[0]}} · Trending</p>
+            <p class="tweet-tag">{{tag[0]}}</p>
+            <p class="tweet-count">{{tag[1]}}k Tweets</p>
         </li>
     </ul>
 </section>
+<!-- ; index as i; key as k -->

@@ -46,18 +46,25 @@ export class TweetFilterTagsComponent implements OnInit, OnDestroy {
             const tweetHashtags = extractHashtags(tweet.text);
             tweetHashtags.forEach(hashtag => {
                 if (accumulator[hashtag]) {
-                    accumulator[hashtag] += 1;
+                    accumulator[hashtag] += 1 * Math.random()
                 } else {
                     accumulator[hashtag] = 1;
                 }
+
+                accumulator[hashtag] = +accumulator[hashtag].toFixed(2)
+
             });
-            return accumulator;
+
+            
+            return accumulator
         }, {});
 
         const hashtagsArray = Object.entries(hashtags);
         hashtagsArray.sort((a, b) => b[1] - a[1]);
-        const res = hashtagsArray.slice(0, 10).map(([hashtag]) => hashtag);
-        return res
+        const res = hashtagsArray.slice(0, 10)
+
+        
+        return res //res.map(([hashtag]) => hashtag);
 
 
         function extractHashtags(text: string): string[] {

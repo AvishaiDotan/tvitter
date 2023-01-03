@@ -1,7 +1,7 @@
 <section class="search-filter">
-    
+
     <div class="img-container">
-        <img src="../../../assets/search_FILL0_wght400_GRAD0_opsz48.png" alt="">
+        <img (click)="handleSearchChange()" src="../../../assets/search_FILL0_wght400_GRAD0_opsz48.png" alt="">
     </div>
 
     <input 
@@ -9,10 +9,11 @@
         id="term" 
         type="text" 
         name="term" 
-        [(ngModel)]="filterBy.term"
-        (ngModelChange)="handleSearchChange()" 
+        [(ngModel)]="filterBy.term" 
         placeholder="Search Tvitter" 
     />
+    
+<!--         (ngModelChange)="handleSearchChange()" -->
 
     <div class="advance-search-cotnainer">
         <svg 

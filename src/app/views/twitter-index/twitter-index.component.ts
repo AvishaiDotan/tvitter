@@ -26,7 +26,7 @@ export class TwitterIndexComponent implements OnInit {
 
         setInterval(() => {
             this.twitterService.addNewTweets()
-        }, 3000)
+        }, 100000)
     }
 
     async handleLike(tweet: Tweet) {
