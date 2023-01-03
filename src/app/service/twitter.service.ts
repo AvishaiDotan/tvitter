@@ -17,12 +17,12 @@ export class TwitterService {
     private _tweets$ = new BehaviorSubject<Tweet[]>([]);
     public tweets$ = this._tweets$.asObservable();
 
-    private _tweetFilter$ = new BehaviorSubject<TweetFilter>({ term: '', skip: 0 });
+    private _tweetFilter$ = new BehaviorSubject<TweetFilter>({ term: '' });
     public tweetFilter$ = this._tweetFilter$.asObservable();
 
     public query() {
         const filterBy = this._tweetFilter$.value;
-        const tweets = this._tweetsDb.slice(filterBy.skip)
+        const tweets = this._tweetsDb
             .filter(({ text, belongsTo }) => {
                 return !belongsTo && text.toLowerCase().includes(filterBy.term.toLowerCase());
             })
@@ -152,7 +152,9 @@ export class TwitterService {
     }
 
     public addNewTweets() {
-        const newTweets = this._tweetsDb.slice(0, 5)
-        this._tweets$.next([...this._tweets$.value, ...newTweets])
+        const newTweets = this._tweetsDb.slice(5, 10)
+        const tweets = [...newTweets, ...this._tweets$.value]
+        this._tweetsDb = [...tweets]
+        this._tweets$.next(tweets)
     }
 }
