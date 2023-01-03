@@ -15,7 +15,7 @@ import { Tweet } from '../../models/tweet.model';
 })
 export class AddTweetFormComponent implements OnInit {
 
-    @Input() placeholderText: string = ''
+    @Input() placeholderText: string = 'What\'s happening'
     @Input() tweetId: string = ''
     @Output() tweetSaved = new EventEmitter<Tweet>()
 
@@ -47,5 +47,6 @@ export class AddTweetFormComponent implements OnInit {
 
     ngOnInit() {
         this.user = this.userService.loggedInUser
+        console.log('placeholderText:', this.placeholderText);
     }
 }

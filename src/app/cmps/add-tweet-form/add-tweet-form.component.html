@@ -3,7 +3,7 @@
         <div class="user-avatar-container">
             <img src="https://randomuser.me/api/portraits/med/men/{{user?._id || 0}}.jpg" alt="">
         </div>
-        <input id="text" type="text" formControlName="text" minlength="3" required placeholder="What's happening">
+        <input id="text" type="text" formControlName="text" minlength="3" required placeholder={{placeholderText}}>
     </section>
     <div class="underline"></div>
     <div class="form-actions">
