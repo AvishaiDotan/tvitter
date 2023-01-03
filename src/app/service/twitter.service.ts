@@ -180,7 +180,7 @@ export class TwitterService {
             newTweets.push(this._createTweet(rndText, user))
         }
         const allTweets = [...newTweets, ...this._tweets$.value]
-        this._tweetsDb = [...allTweets]
+        this._tweetsDb = [...this._tweetsDb, ...allTweets]
         this._tweets$.next(allTweets)
     }
 }
