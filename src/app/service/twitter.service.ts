@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Tweet, TweetFilter } from '../models';
+import { Tweet, TweetFilter, User } from '../models';
 import { BehaviorSubject, Observable, of, lastValueFrom } from 'rxjs';
 import { tweetsDB } from './tweetsDB';
-import { UserService } from './user.service';
+import { tweetTxtDB } from './tweetTxtDB';
+import { UserService, getRandomIntInclusive } from './user.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class TwitterService {
+    serviceInterval: number = 0
     constructor(private userService: UserService) {}
     private _tweetsDb: Tweet[] = tweetsDB;
 
     private _isAdvancedSearchModal$ = new BehaviorSubject<boolean>(false);
     public isAdvancedSearchModal$ = this._isAdvancedSearchModal$.asObservable();
-    
+
     private _isAddTweetModal$ = new BehaviorSubject<boolean>(false);
     public isAddTweetModal$ = this._isAddTweetModal$.asObservable();
 
@@ -52,10 +54,9 @@ export class TwitterService {
         return this.getAllTweets().filter((({ belongsTo }) => belongsTo === tweetId));
     }
 
-    public getEmptyTweet(): object {
+    public getEmptyTweet() {
         return {
             text: '',
-            username: '',
             replies: [],
             likes: [],
             createdAt: Date.now()
@@ -65,13 +66,6 @@ export class TwitterService {
     public toggleLike(tweetId: string): Observable<Tweet> {
         const tweet = this._tweetsDb.find(({ _id }) => _id === tweetId)
         let user = this.userService.loggedInUser!
-        if (!user) {
-            user = {
-                _id: this._makeId(),
-                username: 'Guest',
-                avatarUrl: ''
-            }
-        }
 
         if (tweet) {
             const likeIdx = tweet.likes.findIndex(({ _id }) => _id === user._id)
@@ -118,13 +112,7 @@ export class TwitterService {
     }
 
     private _add(tweet: Tweet) {
-        tweet = {
-            ...this.getEmptyTweet(),
-            ...tweet,
-            _id: this._makeId(),
-            createdAt: Date.now()
-        } as Tweet
-
+        tweet = this._createTweet(tweet.text, tweet.user)
         this._tweetsDb.unshift(tweet);
         this._tweets$.next(this._tweetsDb);
         return of(tweet);
@@ -136,6 +124,26 @@ export class TwitterService {
         tweets.splice(tweetIdx, 1, tweet);
         this._tweets$.next(tweets);
         return of(tweet);
+    }
+
+    public startBackgroundService() {
+        this.serviceInterval = window.setInterval(() => {
+            this._addNewTweets()
+        }, 30000)
+    }
+
+    public stopBackgroundService() {
+        clearInterval(this.serviceInterval)
+    }
+
+    private _createTweet(text: string, user: User) {
+        return {
+            ...this.getEmptyTweet(),
+            text,
+            user,
+            _id: this._makeId(),
+            createdAt: Date.now()
+        }
     }
 
     private _makeId(length = 3) {
@@ -153,15 +161,26 @@ export class TwitterService {
     public toggleAdvancedSearchModal() {
         this._isAdvancedSearchModal$.next(!this._isAdvancedSearchModal$.getValue())
     }
-    
+
     public toggleAddTweetModal() {
         this._isAddTweetModal$.next(!this._isAddTweetModal$.getValue())
     }
 
-    public addNewTweets() {
-        const newTweets = this._tweetsDb.slice(5, 10)
-        const tweets = [...newTweets, ...this._tweets$.value]
-        this._tweetsDb = [...tweets]
-        this._tweets$.next(tweets)
+    private _getRandomText() {
+        const rndIdx = getRandomIntInclusive(0, tweetTxtDB.length - 1)
+        return tweetTxtDB[rndIdx].txt
+    }
+
+    private _addNewTweets() {
+        const rndTweetCount = getRandomIntInclusive(1, 5)
+        const newTweets: Tweet[] = []
+        for (let i = 0; i < rndTweetCount; i++) {
+            const user = this.userService.getRandomUser()
+            const rndText = this._getRandomText()
+            newTweets.push(this._createTweet(rndText, user))
+        }
+        const allTweets = [...newTweets, ...this._tweets$.value]
+        this._tweetsDb = [...allTweets]
+        this._tweets$.next(allTweets)
     }
 }

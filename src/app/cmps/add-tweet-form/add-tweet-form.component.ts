@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, Subscription } from 'rxjs';
 import { User } from 'src/app/models';
 import { TwitterService } from 'src/app/service/twitter.service';
 import { UserService } from 'src/app/service/user.service';
@@ -13,7 +13,7 @@ import { Tweet } from '../../models/tweet.model';
     templateUrl: './add-tweet-form.component.html',
     styleUrls: ['./add-tweet-form.component.scss']
 })
-export class AddTweetFormComponent implements OnInit {
+export class AddTweetFormComponent implements OnInit, OnDestroy {
 
     @Input() placeholderText: string = 'What\'s happening'
     @Input() tweetId: string = ''
@@ -24,7 +24,8 @@ export class AddTweetFormComponent implements OnInit {
         text: ['', [Validators.required, Validators.minLength(3)]]
     })
 
-    user!: User | null
+    user?: User | null
+    userSubscription!: Subscription
     isReply = false
 
     constructor(
@@ -32,6 +33,10 @@ export class AddTweetFormComponent implements OnInit {
         private twitterService: TwitterService,
         private userService: UserService
     ) { }
+
+    ngOnInit() {
+        this.userSubscription = this.userService.user$.subscribe(user => this.user = user)
+    }
 
     async handleSubmit() {
         const { text } = this.profileForm.value
@@ -47,8 +52,7 @@ export class AddTweetFormComponent implements OnInit {
         this.profileForm.reset()
     }
 
-    ngOnInit() {
-        this.user = this.userService.loggedInUser
-        console.log('placeholderText:', this.placeholderText);
+    ngOnDestroy(): void {
+        this.userSubscription.unsubscribe()
     }
 }
