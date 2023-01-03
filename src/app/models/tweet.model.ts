@@ -13,4 +13,5 @@ export interface Tweet {
 
 export interface TweetFilter {
     term: string;
+    skip?: number;
 }

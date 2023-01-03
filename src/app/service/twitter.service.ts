@@ -20,15 +20,16 @@ export class TwitterService {
     private _tweets$ = new BehaviorSubject<Tweet[]>([]);
     public tweets$ = this._tweets$.asObservable();
 
-    private _tweetFilter$ = new BehaviorSubject<TweetFilter>({ term: '' });
+    private _tweetFilter$ = new BehaviorSubject<TweetFilter>({ term: '', skip: 0 });
     public tweetFilter$ = this._tweetFilter$.asObservable();
 
     public query() {
         const filterBy = this._tweetFilter$.value;
+        const tweets = this._tweetsDb.slice(filterBy.skip)
+            .filter(({ text, belongsTo }) => {
+                return !belongsTo && text.toLowerCase().includes(filterBy.term.toLowerCase());
+            })
 
-        const tweets = this._tweetsDb.filter(({ text, belongsTo }) => {
-            return !belongsTo && text.toLowerCase().includes(filterBy.term.toLowerCase());
-        });
         this._tweets$.next(tweets);
     }
 
@@ -63,7 +64,14 @@ export class TwitterService {
 
     public toggleLike(tweetId: string): Observable<Tweet> {
         const tweet = this._tweetsDb.find(({ _id }) => _id === tweetId)
-        const user = this.userService.loggedInUser!
+        let user = this.userService.loggedInUser!
+        if (!user) {
+            user = {
+                _id: this._makeId(),
+                username: 'Guest',
+                avatarUrl: ''
+            }
+        }
 
         if (tweet) {
             const likeIdx = tweet.likes.findIndex(({ _id }) => _id === user._id)

@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 export class AppHeaderComponent implements OnInit, OnDestroy {
     user?: User | null;
     userSubscription!: Subscription
+    tweetsSubscription!: Subscription
+    isMoreAvailable: boolean = false
 
     constructor(
         private userService: UserService,
@@ -23,6 +25,7 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.userSubscription = this.userService.user$.subscribe((user) => (this.user = user));
+        this.tweetsSubscription = this.twitterService.tweets$.subscribe(() => this.isMoreAvailable = true)
     }
 
     logout() {
@@ -32,16 +35,18 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.userSubscription.unsubscribe()
+        this.tweetsSubscription.unsubscribe()
     }
 
     onGoHomePage() {
-        this.TwitterService.setFilter({term: ''})
+        this.twitterService.setFilter({term: ''})
         this.router.navigate(['/']);
+        this.isMoreAvailable = false
     }
 
     toggleSearchModal() {
-        this.TwitterService.toggleAdvancedSearchModal()
+        this.twitterService.toggleAdvancedSearchModal()
     }
 
-    
+
 }
