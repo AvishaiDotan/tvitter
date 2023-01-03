@@ -2,14 +2,13 @@
 
     <header>
         <div class="back-action-container">
-            <svg 
-            (click)="goBack()"
-            viewBox="0 0 24 24" aria-hidden="true"
-            class="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03">
-            <g>
-                <path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z"></path>
-            </g>
-        </svg>
+            <svg (click)="goBack()" viewBox="0 0 24 24" aria-hidden="true"
+                class="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03">
+                <g>
+                    <path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z">
+                    </path>
+                </g>
+            </svg>
         </div>
         <h1>{{ user.username }}</h1>
     </header>
@@ -18,15 +17,35 @@
         <img [src]="user.avatarUrl" alt="">
     </section>
 
+    <section class="user-data">
+        <p class="username">{{ user.username }}</p>
+        <p class="user-account">@{{ user.username }}</p>
+        <div class="user-signup-date">
+            <svg viewBox="0 0 24 24" aria-hidden="true"
+                class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-1d4mawv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr">
+                <g>
+                    <path
+                        d="M7 4V3h2v1h6V3h2v1h1.5C19.89 4 21 5.12 21 6.5v12c0 1.38-1.11 2.5-2.5 2.5h-13C4.12 21 3 19.88 3 18.5v-12C3 5.12 4.12 4 5.5 4H7zm0 2H5.5c-.27 0-.5.22-.5.5v12c0 .28.23.5.5.5h13c.28 0 .5-.22.5-.5v-12c0-.28-.22-.5-.5-.5H17v1h-2V6H9v1H7V6zm0 6h2v-2H7v2zm0 4h2v-2H7v2zm4-4h2v-2h-2v2zm0 4h2v-2h-2v2zm4-4h2v-2h-2v2z">
+                    </path>
+                </g>
+            </svg>
+            <span>Joined December 2021</span>
+        </div>
+
+        <div class="followers">
+            <span>552 Following</span>
+            <span>45 Followers</span>
+        </div>
+
+    </section>            
+    
+
     <div class="header">
         <img [src]="user.avatarUrl" alt="user profile" />
         <p>{{ user.username }}</p>
     </div>
     <section class="user-tweets">
         <h3>Your tweets</h3>
-        <twitter-list
-            [tweets]="tweets"
-            (onLike)="handleLike($event)"
-        ></twitter-list>
+        <twitter-list [tweets]="tweets" (onLike)="handleLike($event)"></twitter-list>
     </section>
 </section>
