@@ -30,7 +30,7 @@ export class UserService {
 
     public signup(username: string) {
         const user: User = {
-            _id: this._makeNumId(3),
+            _id: this._makeNumId(2),
             username,
             avatarUrl: 'https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo.png'
         };
