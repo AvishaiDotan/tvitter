@@ -17,15 +17,17 @@ export class TwitterService {
     private _tweets$ = new BehaviorSubject<Tweet[]>([]);
     public tweets$ = this._tweets$.asObservable();
 
-    private _tweetFilter$ = new BehaviorSubject<TweetFilter>({ term: '' });
+    private _tweetFilter$ = new BehaviorSubject<TweetFilter>({ term: '', skip: 0 });
     public tweetFilter$ = this._tweetFilter$.asObservable();
 
     public query() {
         const filterBy = this._tweetFilter$.value;
+        const tweets = this._tweetsDb
+            .filter(({ text, belongsTo }) => {
+                return !belongsTo && text.toLowerCase().includes(filterBy.term.toLowerCase());
+            })
+            .slice(filterBy.skip as number - 5)
 
-        const tweets = this._tweetsDb.filter(({ text, belongsTo }) => {
-            return !belongsTo && text.toLowerCase().includes(filterBy.term.toLowerCase());
-        });
         this._tweets$.next(tweets);
     }
 

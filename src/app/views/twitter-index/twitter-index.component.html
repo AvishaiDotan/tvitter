@@ -3,8 +3,11 @@
         <h2 (click)="scroll(top)">Home</h2>
     </header>
     <add-tweet-form [placeholderText]="'What\'s happening?'"></add-tweet-form>
+    <section *ngIf="tweetsCount">
+        <button type="button" (click)="showMore()">Show more {{ tweetsCount }}</button>
+    </section>
     <twitter-list
-        [tweets]="tweets$ | async"
+        [tweets]="tweets"
         (onLike)="handleLike($event)"
     ></twitter-list>
 </section>
