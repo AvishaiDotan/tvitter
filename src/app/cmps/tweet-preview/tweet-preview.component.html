@@ -1,25 +1,50 @@
-    <section [routerLink]="['/tweet', tweet._id]" class="tweet-preview">
+<section [routerLink]="['/tweet', tweet._id]" class="tweet-preview">
     <!-- <section [routerLink]="['/tweet', 4]" class="tweet-preview"> -->
-        <section class="avatar-img-container">
-            <img src="https://randomuser.me/api/portraits/med/men/{{tweet.user._id}}.jpg" alt="">
-        </section>
-        <section class="tweet-data">
-            <header class="tweet-details-header">
-                <h2>
-                    <span class="username">{{tweet.user.username}}</span>
-                    <span class="user-account">@{{tweet.user.username}}</span>
-                    <span class="publish-date">{{ tweet.createdAt | date:getDatePipe(tweet.createdAt) }}</span>
-                </h2>
-            </header>
-            <div class="tweet-content">
-                <p class="tweet-text">
-                    {{tweet.text}}
-                </p>
-                <img class="tweet-img" *ngIf="(+this.tweet._id % 3 === 0)" src='https://picsum.photos/id/{{tweet._id}}/400/200' alt="">    
-            </div>
-            <div class="tweet-actions">
-                <button (click)="likeClick($event)">Like <span>{{ tweet.likes.length }}</span></button>
-            </div>
-        </section>
-        
+    <section class="avatar-img-container">
+        <img src="https://randomuser.me/api/portraits/med/men/{{tweet.user._id}}.jpg" alt="">
     </section>
+    <section class="tweet-data">
+        <header class="tweet-details-header">
+            <h2>
+                <span class="username">{{tweet.user.username}}</span>
+                <span class="user-account">@{{tweet.user.username}}</span>
+                <span class="publish-date">{{ tweet.createdAt | date:getDatePipe(tweet.createdAt) }}</span>
+            </h2>
+        </header>
+
+        <div class="tweet-content">
+            <p class="tweet-text">
+                {{tweet.text}}
+            </p>
+            <img class="tweet-img" *ngIf="(+this.tweet._id % 3 === 0)"
+                src='https://picsum.photos/id/{{tweet._id}}/400/200' alt="">
+        </div>
+
+        <div class="tweet-actions">
+
+            <div class="tweet-action" [routerLink]="['/tweet', tweet._id]">
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-chat-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="like-action">
+                <button (click)="likeClick($event)">
+                    <div [ngClass]="{'is_animating': is_animating, 'is-liked': isLiked}"
+                        (animationend)="is_animating=!is_animating; isLiked = !isLiked" class="heart"></div>
+                </button>
+                <span>{{ tweet.likes.length }}</span>
+            </div>
+
+        </div>
+
+
+
+
+    </section>
+
+</section>
