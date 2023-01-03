@@ -45,6 +45,13 @@
                     color: rgb(155, 155, 155);
                 }
             }
+
+            & .replying-to {
+                color: #a5afb6;
+                & span {
+                    color: #1e9bf1;
+                }
+            }
         }
 
         .tweet-content {
@@ -146,6 +153,6 @@
         }
     }
 
-    
+
 
 }
