@@ -55,8 +55,9 @@
             }
 
             .tweet-text {
-                & span {
-                    color: green
+                // this doesn't work
+                .spany {
+                    color: blue;
                 }
             }
         }
@@ -151,5 +152,7 @@
             }
         }
     }
+
+    
 
 }
