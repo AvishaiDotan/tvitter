@@ -1,19 +1,37 @@
 <section *ngIf="tweet" class="tweet-details">
-    <section class="tweet-header">
-        <h3>@{{ tweet.user.username }}</h3>
-        <span>{{ tweet.createdAt | date : "MMM d, y" }}</span>
-        <img
-            *ngIf="+this.tweet._id % 3 === 0"
-            src="https://picsum.photos/id/{{ tweet._id }}/400/200"
-            alt=""
-        />
+    <header>
+        <div class="back-action-container">
+            <svg 
+            (click)="goBack()"
+            viewBox="0 0 24 24" aria-hidden="true"
+            class="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03">
+            <g>
+                <path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z"></path>
+            </g>
+        </svg>
+        </div>
+        <h1>Tweet</h1>
+    </header>
+
+    <section class="user-details">
+        <div class="user-avatar">
+            <img src="https://randomuser.me/api/portraits/med/men/{{22}}.jpg" alt="">
+        </div>
+        <div class="user-data">
+            <p class="username">{{ tweet.user.username }}</p>
+            <p class="user-account">@{{ tweet.user.username }}</p>
+        </div>
+        
     </section>
-    <p>{{ tweet.text }}</p>
+
+    <section class="tweet-content">
+        <p>{{ tweet.text }}</p>
+        <img *ngIf="+this.tweet._id % 3 === 0" src="https://picsum.photos/id/{{ tweet._id }}/400/200" alt="" />
+        <p class="date">{{ tweet.createdAt | date : "hh:mm aa - LLL, d yyyy" }}</p>
+    </section>
+    
     <section class="replies">
-        <twitter-list
-            [tweets]="tweetReplies"
-            (onLike)="handleLike($event)"
-        ></twitter-list>
+        <twitter-list [tweets]="tweetReplies" (onLike)="handleLike($event)"></twitter-list>
     </section>
 
     <add-reply [tweet]="tweet" (onTweetSaved)="addTweet($event)"></add-reply>

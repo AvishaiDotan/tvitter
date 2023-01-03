@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom, Subscription } from 'rxjs';
 
 import { Tweet } from '../../models';
@@ -17,7 +17,8 @@ export class TweetDetailsComponent implements OnInit, OnDestroy {
 
     constructor(
         private twitterService: TwitterService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router
     ) {}
 
     async ngOnInit(): Promise<void> {
@@ -37,5 +38,9 @@ export class TweetDetailsComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
+    }
+
+    goBack() {
+        this.router.navigate(['/']);
     }
 }
