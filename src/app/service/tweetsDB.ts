@@ -4,7 +4,7 @@ export const tweetsDB = [
         tweetImgUrl: 'https://picsum.photos/id/{{tweet._id}}/400/200',
         text: 'Just finished an awesome game of football with my friends! #football',
         user: {
-            _id: 'user1',
+            _id: '1',
             username: 'jane',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=8B7BCDC2',
@@ -30,7 +30,7 @@ export const tweetsDB = [
         tweetImgUrl: 'https://pbs.twimg.com/media/123456789876543210.jpg',
         text: 'Just tried the best sushi in town! #foodie #sushi',
         user: {
-            _id: 'user2',
+            _id: '2',
             username: 'john',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=500B67FB',
@@ -71,7 +71,7 @@ export const tweetsDB = [
         tweetImgUrl: 'https://pbs.twimg.com/media/098765432123456789.jpg',
         text: "Obsessed with this new yoga class I'm taking. #wellness #yoga",
         user: {
-            _id: 'user3',
+            _id: '3',
             username: 'sarah',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=A89D0DE6',
@@ -93,7 +93,7 @@ export const tweetsDB = [
         avatarUrl: 'https://example.com/avatars/john_doe.png',
         text: "Who's ready for the big game tonight?! #football #sport",
         user: {
-            _id: 'user4',
+            _id: '4',
             username: 'mike',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=225E6693',
@@ -119,7 +119,7 @@ export const tweetsDB = [
         avatarUrl: 'https://example.com/avatars/jane_doe.png',
         text: 'Had the best time exploring the city on my bike today. #cycling #adventure',
         user: {
-            _id: 'user5',
+            _id: '5',
             username: 'lisa',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=9D9539E7',
@@ -140,7 +140,7 @@ export const tweetsDB = [
         avatarUrl: 'https://example.com/avatars/bob_smith.png',
         text: "Thrilled to announce that I'll be running my first marathon next month! #fitness #running",
         user: {
-            _id: 'user6',
+            _id: '6',
             username: 'alex',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=BDC01094',
@@ -161,7 +161,7 @@ export const tweetsDB = [
         avatarUrl: 'https://example.com/avatars/bob_smith.png',
         text: "Just finished my latest painting and I'm loving how it turned out. #art #creativity",
         user: {
-            _id: 'user7',
+            _id: '7',
             username: 'samuel',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=7F5AE56A',
@@ -188,7 +188,7 @@ export const tweetsDB = [
         tweetImgUrl: 'https://example.com/tweet_images/9.png',
         text: 'So proud of my little brother for scoring the winning goal in his soccer game. #family #sports',
         user: {
-            _id: 'user8',
+            _id: '8',
             username: 'david',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=4F32C4CF',
@@ -209,7 +209,7 @@ export const tweetsDB = [
         avatarUrl: 'https://example.com/avatars/jane_doe.png',
         text: "Can't wait to try out this new vegan restaurant everyone's been raving about. #vegan #foodie",
         user: {
-            _id: 'user9',
+            _id: '9',
             username: 'jessica',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=B0E33EF4',
@@ -231,7 +231,7 @@ export const tweetsDB = [
         tweetImgUrl: 'https://example.com/tweet_images/11.png',
         text: 'Excited to be visiting a new country for the first time next month! #travels #explore',
         user: {
-            _id: 'user10',
+            _id: '10',
             username: 'matt',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=2D297A22',
@@ -257,7 +257,7 @@ export const tweetsDB = [
         avatarUrl: 'https://example.com/avatars/jane_doe.png',
         text: 'Feeling so inspired after attending a workshop on mindfulness. #wellness #mindfulness',
         user: {
-            _id: 'user2',
+            _id: '2',
             username: 'john',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=500B67FB',
@@ -278,7 +278,7 @@ export const tweetsDB = [
         avatarUrl: 'https://example.com/avatars/jane_doe.png',
         text: "Just finished building my first app with #reactjs and I'm loving it! #coding #tech",
         user: {
-            _id: 'user4',
+            _id: '4',
             username: 'mike',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=225E6693',
@@ -298,7 +298,7 @@ export const tweetsDB = [
         tweetImgUrl: 'https://example.com/tweet_images/14.png',
         text: 'TypeScript is my go-to for any project!',
         user: {
-            _id: 'user6',
+            _id: '6',
             username: 'alex',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=BDC01094',
@@ -323,7 +323,7 @@ export const tweetsDB = [
         tweetImgUrl: 'https://example.com/tweet_images/15.png',
         text: "Can't believe I just hiked to the top of that mountain. Such a rush! #adventure #outdoors",
         user: {
-            _id: 'user10',
+            _id: '10',
             username: 'matt',
             avatarUrl:
                 'https://api.lorem.space/image/face?w=150&h=150&hash=2D297A22',
