@@ -5,7 +5,7 @@ import { TwitterService } from 'src/app/service/twitter.service';
 @Component({
   selector: 'add-tweet-modal',
   templateUrl: './add-tweet-modal.component.html',
-  styleUrls: ['./add-tweet-modal.component.scss']
+  styleUrls: ['./add-tweet-modal.component.scss'],
 })
 export class AddTweetModalComponent implements OnInit {
 
