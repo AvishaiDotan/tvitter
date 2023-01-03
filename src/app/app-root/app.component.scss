@@ -16,6 +16,7 @@
     }
 
     @media screen and (max-width: 700px) {
-        grid-template-columns: 70px 1fr
+        grid-template-columns: 70px 1fr;
+        width: 100%;
     }
 }
