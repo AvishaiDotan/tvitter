@@ -8,18 +8,35 @@
     display: flex;
     justify-content: center;
 
+
+
     .add-tweet-modal {
         width: 600px;
-        height: 400px;
+        height: 200px;
         background-color: white;
         margin-block-start: 150px;
         border-radius: 10px;
 
         .add-tweet-form {
-            transform: translateY(133px);
-            
+            padding-inline: 20px;
         }
-        
+
+        @media screen and (max-width: 650px) {
+            width: 100%;
+            margin-block-start: 0px;
+            top: 0;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            transform: translateY(47px);
+            /* padding-inline: 10px; */
+        }
+
+
+
 
         header {
             height: 55px;
@@ -28,9 +45,34 @@
             align-content: center;
             padding-inline: 20px;
 
-            svg {
-                height: 100%;
+            .exit-icon-wrapper {
+                width: min-content;
+                padding-inline: 12px;
+                padding-block: 10px;
+                background-color: transparent;
+                border-radius: 50%;
+                transition: 0.4s;
+
+                &:hover {
+                    background-color: #cfcfcf;
+                }
+
+                svg {
+                    height: 100%;
+                    filter: invert(99%) sepia(5%) saturate(1365%) hue-rotate(295deg) brightness(116%) contrast(73%);
+                    &:hover {
+                        cursor: pointer;
+                        filter: invert(54%) sepia(32%) saturate(5061%) hue-rotate(179deg) brightness(98%) contrast(93%);
+                    }
+                }
             }
+
+
         }
+
+        .underline {
+            display: none;
+        }
+
     }
 }

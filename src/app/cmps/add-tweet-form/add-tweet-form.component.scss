@@ -7,6 +7,7 @@
     padding-inline: 5px;
     padding-block: 5px;
     padding-block-start: 53px;
+    padding-block-start: 0px;
 
     .tweet-body {
         min-height: 52px;
@@ -56,12 +57,12 @@
     .underline {
         width: calc(100% - 67px);
         height: 1px;
-        background-color: gainsboro;
-        /* margin: auto; */
+        background-color: #dcdcdc;
         margin-block: 10px;
         margin-inline-start: 55px;
         margin-inline-end: 100px;
     }
+
 
 
 }
