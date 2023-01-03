@@ -24,15 +24,19 @@ export class UserService {
     }
 
     public loadUser() {
-        const user = loadFromStorage(STORAGE_KEY);
-        if (user) this._user$.next(user);
+        let user = loadFromStorage(STORAGE_KEY);
+        if (!user) {
+            user = this.logUserAsGuest()
+            saveToStorage(STORAGE_KEY, user)
+        }
+        this._user$.next(user);
     }
 
     public signup(username: string) {
         const user: User = {
             _id: this._makeNumId(2),
             username,
-            avatarUrl: 'https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo.png'
+            avatarUrl: 'https://api.lorem.space/image/face?w=150&h=150&hash=4F32C4CF'
         };
 
         this._user$.next(user);
@@ -55,5 +59,13 @@ export class UserService {
             );
         }
         return text;
+    }
+
+    private logUserAsGuest() {
+        return {
+            _id: this._makeNumId(2),
+            username: 'Guest',
+            avatarUrl: 'https://api.lorem.space/image/face?w=150&h=150&hash=225E6693'
+        }
     }
 }

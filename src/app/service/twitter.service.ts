@@ -13,7 +13,7 @@ export class TwitterService {
 
     private _isAdvancedSearchModal$ = new BehaviorSubject<boolean>(false);
     public isAdvancedSearchModal$ = this._isAdvancedSearchModal$.asObservable();
-    
+
     private _isAddTweetModal$ = new BehaviorSubject<boolean>(false);
     public isAddTweetModal$ = this._isAddTweetModal$.asObservable();
 
@@ -65,13 +65,6 @@ export class TwitterService {
     public toggleLike(tweetId: string): Observable<Tweet> {
         const tweet = this._tweetsDb.find(({ _id }) => _id === tweetId)
         let user = this.userService.loggedInUser!
-        if (!user) {
-            user = {
-                _id: this._makeId(),
-                username: 'Guest',
-                avatarUrl: ''
-            }
-        }
 
         if (tweet) {
             const likeIdx = tweet.likes.findIndex(({ _id }) => _id === user._id)
@@ -153,7 +146,7 @@ export class TwitterService {
     public toggleAdvancedSearchModal() {
         this._isAdvancedSearchModal$.next(!this._isAdvancedSearchModal$.getValue())
     }
-    
+
     public toggleAddTweetModal() {
         this._isAddTweetModal$.next(!this._isAddTweetModal$.getValue())
     }
