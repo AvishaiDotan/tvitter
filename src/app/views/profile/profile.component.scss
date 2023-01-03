@@ -1,0 +1,54 @@
+.profile {
+
+    header {
+        height: 53px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+
+
+        .back-action-container {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: 0.4s;
+
+            &:hover {
+                background-color: #cfcfcf;
+                cursor: pointer;
+
+            }
+
+            svg {
+                height: 20px;
+            }
+        }
+
+        
+
+        h1 {
+            margin-inline-start: 40px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+
+    .profile-imgs {
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+        height: 250px;
+        position: relative;
+
+        img {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+        }
+    }
+
+}

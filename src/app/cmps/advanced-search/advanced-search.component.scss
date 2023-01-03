@@ -19,9 +19,10 @@
 
         header {
             height: 55px;
-            display: grid;
-            grid-template-columns: 70px 415px 1fr;
-            align-content: center;
+            display: flex;
+            // grid-template-columns: 70px 415px 1fr;
+            justify-content: flex-start;
+            align-items: center;
             padding-inline: 20px;
 
             svg {
@@ -31,6 +32,7 @@
             h1,
             button {
                 font-weight: 800;
+                padding-inline-start: 25px;
             }
         }
     }
@@ -93,6 +95,10 @@
             color: white;
             transition: 0.4s;
             cursor: pointer;
+
+            &:hover {
+                background-color: #1d9bf0;
+            }
         }
 
         @media screen and (max-width: 650px) {
