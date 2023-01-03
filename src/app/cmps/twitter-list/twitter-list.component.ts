@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Tweet } from 'src/app/models/tweet.model';
-import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'twitter-list',
@@ -10,10 +9,4 @@ import { UserService } from 'src/app/service/user.service';
 export class TwitterListComponent {
   @Input() tweets!: Tweet[] | null
   @Output() onLike = new EventEmitter<Tweet>()
-
-  constructor(private userService: UserService) {}
-
-  get user() {
-    return this.userService.loggedInUser
-  }
 }

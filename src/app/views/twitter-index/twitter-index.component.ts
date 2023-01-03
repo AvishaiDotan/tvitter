@@ -21,10 +21,11 @@ export class TwitterIndexComponent implements OnInit, OnDestroy {
     tweetsToShow: number = 0;
     tweetsCountSub!: Subscription
     tweetsFilterSub!: Subscription
-    user$!: Observable<User | null>
+    user!: User | null
+    userSubscription!: Subscription
 
     ngOnInit(): void {
-        this.user$ = this.userService.user$
+        this.userSubscription = this.userService.user$.subscribe(user => this.user = user);
         this.loadTweets()
 
         this.tweetsCountSub = this.twitterService.tweets$
@@ -63,5 +64,6 @@ export class TwitterIndexComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.tweetsCountSub.unsubscribe()
         this.tweetsFilterSub.unsubscribe()
+        this.userSubscription.unsubscribe()
     }
 }

@@ -2,8 +2,9 @@
     <header>
         <h2 (click)="scroll(top)">Home</h2>
     </header>
+    <div *ngIf="!user" class="margin-top"></div>
     <add-tweet-form
-        *ngIf="user$ | async"
+        *ngIf="user"
         [placeholderText]="'What\'s happening?'"
         (tweetSaved)="addTweet($event)"
     ></add-tweet-form>
