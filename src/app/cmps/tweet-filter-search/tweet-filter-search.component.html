@@ -1,31 +1,29 @@
-<section class="search-filter">
+<form class="search-filter" (ngSubmit)="handleSubmit(form.value)" #form="ngForm">
 
     <div class="img-container">
-        <img (click)="handleSearchChange()" src="../../../assets/search_FILL0_wght400_GRAD0_opsz48.png" alt="">
+        <img (click)="form.onSubmit($event)" src="../../../assets/search_FILL0_wght400_GRAD0_opsz48.png" alt="">
     </div>
 
-    <input 
-        class="search-input" 
-        id="term" 
-        type="text" 
-        name="term" 
-        [(ngModel)]="filterBy.term" 
-        placeholder="Search Tvitter" 
+    <input
+        class="search-input"
+        id="term"
+        type="text"
+        name="term"
+        ngModel
+        placeholder="Search Tvitter"
     />
-    
-<!--         (ngModelChange)="handleSearchChange()" -->
 
     <div class="advance-search-cotnainer">
-        <svg 
-            (click)="TwitterService.toggleAdvancedSearchModal()" 
-            xmlns="http://www.w3.org/2000/svg" 
+        <svg
+            (click)="TwitterService.toggleAdvancedSearchModal()"
+            xmlns="http://www.w3.org/2000/svg"
             width="16"
-            height="16" 
-            fill="currentColor" 
-            class="bi bi-three-dots" 
+            height="16"
+            fill="currentColor"
+            class="bi bi-three-dots"
             viewBox="0 0 16 16">
             <path
                 d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
         </svg>
     </div>
-</section>
+</form>
