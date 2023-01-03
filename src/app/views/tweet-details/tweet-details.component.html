@@ -19,11 +19,12 @@
 
     <section class="user-details">
         <div class="user-avatar">
-            <img
+            <!-- <img
                 src="https://randomuser.me/api/portraits/med/men/{{ 22 }}.jpg"
                 alt=""
-            />
+            /> -->
             <!-- <img [src]="tweet.user?.avatarUrl || 'https://api.lorem.space/image/face?w=150&h=150'"> -->
+            <img [src]="tweet.user.avatarUrl">
         </div>
         <div class="user-data">
             <p class="username">{{ tweet.user.username }}</p>
