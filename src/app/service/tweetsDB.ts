@@ -7,7 +7,7 @@ export const tweetsDB = [
             _id: '1',
             username: 'jane',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=8B7BCDC2',
+            'https://cdn.lorem.space/images/face/.cache/150x150/michael-dam-mEZ3PoFGs_k-unsplash.jpg',
         },
         createdAt: 1605343051000,
         replies: ['i9j0k1l2', 'm3n4o5p6'],
@@ -33,7 +33,7 @@ export const tweetsDB = [
             _id: '2',
             username: 'john',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=500B67FB',
+            'https://cdn.lorem.space/images/face/.cache/150x150/julian-wan-WNoLnJo7tS8-unsplash.jpg',
         },
         createdAt: 1614681412000,
         replies: ['2'],
@@ -53,7 +53,7 @@ export const tweetsDB = [
             _id: '1',
             username: 'johnsmith',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=A89D0DE6',
+            'https://cdn.lorem.space/images/face/.cache/150x150/meysam-jarahkar-l4gz33evF9k-unsplash.jpg',
         },
         createdAt: 1614681412000,
         replies: [],
@@ -74,7 +74,7 @@ export const tweetsDB = [
             _id: '3',
             username: 'sarah',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=A89D0DE6',
+            'https://cdn.lorem.space/images/face/.cache/150x150/manny-moreno-Jm1CwCoYxkM-unsplash.jpg',
         },
         createdAt: 1614681412000,
         replies: ['1'],
@@ -96,7 +96,7 @@ export const tweetsDB = [
             _id: '4',
             username: 'mike',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=225E6693',
+            'https://cdn.lorem.space/images/face/.cache/150x150/meysam-jarahkar-l4gz33evF9k-unsplash.jpg',
         },
         createdAt: 162345987,
         replies: ['5', '6'],
@@ -122,7 +122,7 @@ export const tweetsDB = [
             _id: '5',
             username: 'lisa',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=9D9539E7',
+            'https://cdn.lorem.space/images/face/.cache/150x150/pexels-th-team-9640282.jpg',
         },
         createdAt: 162345989,
         replies: ['7'],
@@ -143,7 +143,7 @@ export const tweetsDB = [
             _id: '6',
             username: 'alex',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=BDC01094',
+            'https://cdn.lorem.space/images/face/.cache/150x150/michael-weir-A_cNlkZc5mw-unsplash.jpg',
         },
         createdAt: 162346987,
         replies: [],
@@ -164,7 +164,7 @@ export const tweetsDB = [
             _id: '7',
             username: 'samuel',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=7F5AE56A',
+            'https://cdn.lorem.space/images/face/.cache/150x150/kenny-timmer-V-bW-TDTo2c-unsplash.jpg',
         },
         createdAt: 162345987,
         replies: ['9'],
@@ -191,7 +191,7 @@ export const tweetsDB = [
             _id: '8',
             username: 'david',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=4F32C4CF',
+            'https://cdn.lorem.space/images/face/.cache/150x150/reza-biazar-eSjmZW97cH8-unsplash.jpg',
         },
         createdAt: 162345989,
         replies: ['11'],
@@ -212,7 +212,7 @@ export const tweetsDB = [
             _id: '9',
             username: 'jessica',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=B0E33EF4',
+            'https://cdn.lorem.space/images/face/.cache/150x150/rachel-mcdermott-0fN7Fxv1eWA-unsplash.jpg',
         },
         createdAt: 162346987,
         replies: [],
@@ -234,7 +234,7 @@ export const tweetsDB = [
             _id: '10',
             username: 'matt',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=2D297A22',
+            'https://cdn.lorem.space/images/face/.cache/150x150/jake-fagan-Y7C7F26fzZM-unsplash.jpg',
         },
         createdAt: 162345987,
         replies: ['12'],
@@ -260,7 +260,7 @@ export const tweetsDB = [
             _id: '2',
             username: 'john',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=500B67FB',
+            'https://cdn.lorem.space/images/face/.cache/150x150/julian-wan-WNoLnJo7tS8-unsplash.jpg',
         },
         createdAt: 162345989,
         replies: ['14'],
@@ -281,7 +281,7 @@ export const tweetsDB = [
             _id: '4',
             username: 'mike',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=225E6693',
+            'https://cdn.lorem.space/images/face/.cache/150x150/meysam-jarahkar-l4gz33evF9k-unsplash.jpg',
         },
         createdAt: 162346987,
         replies: [],
@@ -301,7 +301,7 @@ export const tweetsDB = [
             _id: '6',
             username: 'alex',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=BDC01094',
+            'https://cdn.lorem.space/images/face/.cache/150x150/michael-weir-A_cNlkZc5mw-unsplash.jpg',
         },
         createdAt: 162345987,
         replies: ['15', '16'],
@@ -326,7 +326,7 @@ export const tweetsDB = [
             _id: '10',
             username: 'matt',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=2D297A22',
+            'https://cdn.lorem.space/images/face/.cache/150x150/jake-fagan-Y7C7F26fzZM-unsplash.jpg',
         },
         createdAt: 162345989,
         replies: ['17'],
@@ -340,127 +340,3 @@ export const tweetsDB = [
     },
 ];
 
-// export const tweetsDB = [
-//     {
-//         _id: 'tweet1',
-//         tweetImgUrl: 'https://api.lorem.space/image?w=150&h=180&hash=8B7BCDC2',
-//         text: 'Just cooked the best pasta dish for dinner! #cooking',
-//         user: {
-//             _id: 'user1',
-//             username: 'jane',
-//             avatarUrl:
-//                 'https://api.lorem.space/image/face?w=150&h=150&hash=8B7BCDC2',
-//         },
-//         createdAt: 1605343051000,
-//         replies: ['tweet2', 'tweet3'],
-//         likes: [
-//             {
-//                 _id: 'user2',
-//                 username: 'john',
-//                 avatarUrl:
-//                     'https://api.lorem.space/image/face?w=150&h=150&hash=500B67FB',
-//             },
-//             {
-//                 _id: 'user3',
-//                 username: 'sarah',
-//                 avatarUrl:
-//                     'https://api.lorem.space/image/face?w=150&h=150&hash=A89D0DE6',
-//             },
-//         ],
-//     },
-//     {
-//         _id: 'tweet2',
-//         tweetImgUrl: 'https://api.lorem.space/image?w=150&h=180&hash=500B67FB',
-//         text: 'Heading off on a trip to Bali! #travels #trips',
-//         user: {
-//             _id: 'user4',
-//             username: 'mike',
-//             avatarUrl:
-//                 'https://api.lorem.space/image/face?w=150&h=150&hash=225E6693',
-//         },
-//         createdAt: 1605343051000,
-//         replies: ['tweet1'],
-//         likes: [
-//             {
-//                 _id: 'user5',
-//                 username: 'lisa',
-//                 avatarUrl:
-//                     'https://api.lorem.space/image/face?w=150&h=150&hash=9D9539E7',
-//             },
-//             {
-//                 _id: 'user6',
-//                 username: 'alex',
-//                 avatarUrl:
-//                     'https://api.lorem.space/image/face?w=150&h=150&hash=BDC01094',
-//             },
-//         ],
-//     },
-//     {
-//         _id: 'tweet3',
-//         tweetImgUrl: 'https://api.lorem.space/image?w=150&h=180&hash=A89D0DE6',
-//         text: 'Just finished building a new project with #reactjs!',
-//         user: {
-//             _id: 'user7',
-//             username: 'samuel',
-//             avatarUrl:
-//                 'https://api.lorem.space/image/face?w=150&h=150&hash=7F5AE56A',
-//         },
-//         createdAt: 1605343051000,
-//         replies: ['tweet1'],
-//         likes: [],
-//     },
-//     {
-//         _id: 'tweet4',
-//         tweetImgUrl: 'https://api.lorem.space/image?w=150&h=180&hash=8B7BCDC2',
-//         text: 'Just caught the winning touchdown at the football game! #football',
-//         user: {
-//             _id: 'user1',
-//             username: 'jane',
-//             avatarUrl:
-//                 'https://api.lorem.space/image/face?w=150&h=150&hash=8B7BCDC2',
-//         },
-//         createdAt: 1605343051000,
-//         replies: ['tweet2', 'tweet3'],
-//         likes: [
-//             {
-//                 _id: 'user2',
-//                 username: 'john',
-//                 avatarUrl:
-//                     'https://api.lorem.space/image/face?w=150&h=150&hash=500B67FB',
-//             },
-//             {
-//                 _id: 'user3',
-//                 username: 'sarah',
-//                 avatarUrl:
-//                     'https://api.lorem.space/image/face?w=150&h=150&hash=A89D0DE6',
-//             },
-//         ],
-//     },
-//     {
-//         _id: 'tweet5',
-//         tweetImgUrl: '',
-//         text: 'Heading off on a trip to Bali! #travels #trips',
-//         user: {
-//             _id: 'user4',
-//             username: 'mike',
-//             avatarUrl:
-//                 'https://api.lorem.space/image/face?w=150&h=150&hash=225E6693',
-//         },
-//         createdAt: 1605343051000,
-//         replies: ['tweet1'],
-//         likes: [
-//             {
-//                 _id: 'user5',
-//                 username: 'lisa',
-//                 avatarUrl:
-//                     'https://api.lorem.space/image/face?w=150&h=150&hash=9D9539E7',
-//             },
-//             {
-//                 _id: 'user6',
-//                 username: 'alex',
-//                 avatarUrl:
-//                     'https://api.lorem.space/image/face?w=150&h=150&hash=BDC01094',
-//             },
-//         ],
-//     },
-// ];

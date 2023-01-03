@@ -38,7 +38,7 @@ export class UserService {
             _id: this._makeNumId(2),
             username,
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=4F32C4CF',
+                'https://cdn.lorem.space/images/face/.cache/150x150/austin-wade-X6Uj51n5CE8-unsplash.jpg',
         };
 
         this._user$.next(user);
@@ -73,7 +73,7 @@ export class UserService {
             _id: this._makeNumId(2),
             username: 'Guest',
             avatarUrl:
-                'https://api.lorem.space/image/face?w=150&h=150&hash=225E6693',
+                'https://cdn.lorem.space/images/face/.cache/150x150/jurica-koletic-7YVZYZeITc8-unsplash.jpg',
         };
     }
 }

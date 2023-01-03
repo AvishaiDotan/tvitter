@@ -9,7 +9,7 @@ export const userDB = [
         _id: '2',
         username: 'john',
         avatarUrl:
-            'https://api.lorem.space/image/face?w=150&h=150&hash=500B67FB',
+            'https://cdn.lorem.space/images/face/.cache/150x150/julian-wan-WNoLnJo7tS8-unsplash.jpg',
     },
     {
         _id: '3',
@@ -39,7 +39,7 @@ export const userDB = [
         _id: '7',
         username: 'samuel',
         avatarUrl:
-            'https://api.lorem.space/image/face?w=150&h=150&hash=7F5AE56A',
+            'https://cdn.lorem.space/images/face/.cache/150x150/kenny-timmer-V-bW-TDTo2c-unsplash.jpg',
     },
     {
         _id: '8',
