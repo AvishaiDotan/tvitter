@@ -61,7 +61,14 @@ export class TwitterService {
 
     public toggleLike(tweetId: string): Observable<Tweet> {
         const tweet = this._tweetsDb.find(({ _id }) => _id === tweetId)
-        const user = this.userService.loggedInUser!
+        let user = this.userService.loggedInUser!
+        if (!user) {
+            user = {
+                _id: this._makeId(),
+                username: 'Guest',
+                avatarUrl: ''
+            }
+        }
 
         if (tweet) {
             const likeIdx = tweet.likes.findIndex(({ _id }) => _id === user._id)
