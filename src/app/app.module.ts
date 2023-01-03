@@ -18,6 +18,7 @@ import { SignupComponent } from './views/signup/signup.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { AddReplyComponent } from './cmps/add-reply/add-reply.component';
 import { AdvancedSearchComponent } from './cmps/advanced-search/advanced-search.component';
+import { AddTweetModalComponent } from './cmps/add-tweet-modal/add-tweet-modal.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AdvancedSearchComponent } from './cmps/advanced-search/advanced-search.
     SignupComponent,
     ProfileComponent,
     AddReplyComponent,
-    AdvancedSearchComponent
+    AdvancedSearchComponent,
+    AddTweetModalComponent
   ],
   imports: [
     BrowserModule,
