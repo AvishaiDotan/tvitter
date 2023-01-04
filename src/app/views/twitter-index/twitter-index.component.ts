@@ -52,8 +52,12 @@ export class TwitterIndexComponent implements OnInit, OnDestroy {
         await lastValueFrom(this.twitterService.toggleLike(tweet._id))
     }
 
-    scroll(el: HTMLElement) {
-        el.scrollIntoView({ behavior: 'smooth' });
+    scroll() {
+        window.scrollTo({
+            behavior: 'smooth',
+            left: 0,
+            top: 0
+        })
     }
 
     showMore() {
