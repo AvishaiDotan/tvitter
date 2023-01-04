@@ -63,6 +63,7 @@
 
             .username {
                 font-weight: 700;
+                text-transform: capitalize;
             }
 
             .user-account {
@@ -75,7 +76,7 @@
         margin-block-start: 20px;
         border-block-end: 0.5px solid #dcdcdc;
         padding-block-end: 20px;
-        
+
 
         .date {
             margin-block-start: 40px;

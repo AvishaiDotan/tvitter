@@ -9,6 +9,7 @@ export interface Tweet {
     createdAt: number;
     replies: string[]; // list of tweetIds
     likes: User[];
+    fakeLikes?: number;
 }
 
 export interface TweetFilter {

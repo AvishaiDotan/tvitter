@@ -38,9 +38,9 @@
             <div class="like-action">
                 <button (click)="likeClick($event)">
                     <div [ngClass]="{'is_animating': is_animating, 'is-liked': isLiked}"
-                        (animationend)="is_animating=!is_animating; isLiked = !isLiked" class="heart"></div>
+                        (animationend)="is_animating=!is_animating;" class="heart"></div>
                 </button>
-                <span>{{ tweet.likes.length }}</span>
+                <span>{{ likesCount }}</span>
             </div>
 
         </div>
