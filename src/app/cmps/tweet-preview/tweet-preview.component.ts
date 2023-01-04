@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Tweet } from 'src/app/models/tweet.model';
 import { TwitterService } from 'src/app/service/twitter.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
     selector: 'tweet-preview',
@@ -11,14 +11,16 @@ import { TwitterService } from 'src/app/service/twitter.service';
 })
 export class TweetPreviewComponent implements OnInit {
 
-    constructor(private router: Router, private twitterService: TwitterService) {}
+    constructor(
+        private twitterService: TwitterService,
+        private userService: UserService
+    ) {}
 
     @Input() tweet!: Tweet
 
     belongsToTweet$!: Observable<Tweet>
 
     is_animating: boolean = false;
-    isLiked: boolean = false;
 
     ngOnInit(): void {
         if (this.tweet.belongsTo) {
@@ -32,7 +34,14 @@ export class TweetPreviewComponent implements OnInit {
         return 'LLL d'
     }
 
+    get isLiked() {
+        const user = this.userService.loggedInUser
+        return user && this.tweet.likes.some(({ _id }) => _id === user._id)
+    }
 
+    get likesCount() {
+        return this.tweet.likes.length + this.tweet.fakeLikes!
+    }
 
     @Output() like = new EventEmitter<Tweet>()
 
