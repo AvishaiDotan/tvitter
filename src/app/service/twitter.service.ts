@@ -160,7 +160,7 @@ export class TwitterService implements OnDestroy {
         clearInterval(this.serviceInterval)
     }
 
-    private _createTweet(text: string, user: User) {
+    private _createTweet(text: string, user: User): Tweet {
         return {
             ...this.getEmptyTweet(),
             text,
@@ -189,7 +189,9 @@ export class TwitterService implements OnDestroy {
         for (let i = 0; i < rndTweetCount; i++) {
             const user = this.userService.getRandomUser()
             const rndText = this._getRandomText()
-            newTweets.push(this._createTweet(rndText, user))
+            const tweet = this._createTweet(rndText, user)
+            tweet.fakeLikes = getRandomIntInclusive(15, 59)
+            newTweets.push()
         }
         const allTweets = [...newTweets, ...this._tweets$.value]
         this._tweetsDb = [...this._tweetsDb, ...allTweets]
