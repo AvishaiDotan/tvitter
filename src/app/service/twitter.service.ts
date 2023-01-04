@@ -191,10 +191,10 @@ export class TwitterService implements OnDestroy {
             const rndText = this._getRandomText()
             const tweet = this._createTweet(rndText, user)
             tweet.fakeLikes = getRandomIntInclusive(15, 59)
-            newTweets.push()
+            newTweets.push(tweet)
         }
         const allTweets = [...newTweets, ...this._tweets$.value]
-        this._tweetsDb = [...this._tweetsDb, ...allTweets]
+        this._tweetsDb = [...this._tweetsDb, ...newTweets]
         this._tweets$.next(allTweets)
     }
 }
