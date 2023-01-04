@@ -40,7 +40,7 @@ export class TweetPreviewComponent implements OnInit {
     }
 
     get likesCount() {
-        return this.tweet.likes.length + this.tweet.fakeLikes!
+        return this.tweet.likes.length + (this.tweet?.fakeLikes || 0)
     }
 
     @Output() like = new EventEmitter<Tweet>()
