@@ -1,17 +1,41 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Tweet, TweetFilter, User } from '../models';
-import { BehaviorSubject, Observable, of, lastValueFrom } from 'rxjs';
+import { BehaviorSubject, Observable, of, lastValueFrom, Subscription } from 'rxjs';
+
+import { loadFromStorage, saveToStorage, makeId, getRandomIntInclusive } from './util.service'
 import { tweetsDB } from './tweetsDB';
 import { tweetTxtDB } from './tweetTxtDB';
-import { UserService, getRandomIntInclusive } from './user.service';
+import { UserService } from './user.service';
+
+const STORAGE_KEY = 'tweetsDB'
+function loadTweets() {
+    let tweets = loadFromStorage(STORAGE_KEY)
+    if (!tweets) {
+        tweets = (tweetsDB as Tweet[]).map(tweet => {
+            tweet.fakeLikes = getRandomIntInclusive(58, 597)
+            return tweet
+        })
+        saveToStorage(STORAGE_KEY, tweets)
+    }
+    return tweets
+}
 
 @Injectable({
     providedIn: 'root',
 })
-export class TwitterService {
+export class TwitterService implements OnDestroy {
     serviceInterval: number = 0
-    constructor(private userService: UserService) {}
-    private _tweetsDb: Tweet[] = tweetsDB;
+    tweetsSubscription!: Subscription
+
+    constructor(private userService: UserService) {
+        this.tweetsSubscription = this._tweets$.subscribe(tweets => saveToStorage(STORAGE_KEY, tweets))
+    }
+
+    ngOnDestroy(): void {
+        this.tweetsSubscription.unsubscribe()
+    }
+
+    private _tweetsDb: Tweet[] = loadTweets();
 
     private _isAdvancedSearchModal$ = new BehaviorSubject<boolean>(false);
     public isAdvancedSearchModal$ = this._isAdvancedSearchModal$.asObservable();
@@ -19,7 +43,7 @@ export class TwitterService {
     private _isAddTweetModal$ = new BehaviorSubject<boolean>(false);
     public isAddTweetModal$ = this._isAddTweetModal$.asObservable();
 
-    private _tweets$ = new BehaviorSubject<Tweet[]>([]);
+    private _tweets$ = new BehaviorSubject<Tweet[]>(this._tweetsDb);
     public tweets$ = this._tweets$.asObservable();
 
     private _tweetFilter$ = new BehaviorSubject<TweetFilter>({ term: '' });
@@ -141,21 +165,9 @@ export class TwitterService {
             ...this.getEmptyTweet(),
             text,
             user,
-            _id: this._makeId(),
+            _id: makeId(),
             createdAt: Date.now()
         }
-    }
-
-    private _makeId(length = 3) {
-        var text = '';
-        var possible =
-            '123456789';
-        for (var i = 0; i < length; i++) {
-            text += possible.charAt(
-                Math.floor(Math.random() * possible.length)
-            );
-        }
-        return text;
     }
 
     public toggleAdvancedSearchModal() {
