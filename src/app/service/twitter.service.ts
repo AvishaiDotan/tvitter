@@ -194,7 +194,7 @@ export class TwitterService implements OnDestroy {
             newTweets.push(tweet)
         }
         const allTweets = [...newTweets, ...this._tweets$.value]
-        this._tweetsDb = [...this._tweetsDb, ...newTweets]
+        this._tweetsDb = [...newTweets, ...this._tweetsDb]
         this._tweets$.next(allTweets)
     }
 }
