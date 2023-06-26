@@ -34,6 +34,20 @@ export class TweetPreviewComponent implements OnInit {
         return 'LLL d'
     }
 
+    generateRandomWord() {
+        const letters = 'abcdefghijklmnopqrstuvwxyz';
+        let randomWord = '';
+        
+        for (let i = 0; i < 6; i++) {
+          const randomIndex = Math.floor(Math.random() * letters.length);
+          const randomLetter = letters.charAt(randomIndex);
+          randomWord += randomLetter;
+        }
+        
+        return randomWord;
+    }
+
+
     get isLiked() {
         const user = this.userService.loggedInUser
         return user && this.tweet.likes.some(({ _id }) => _id === user._id)
